@@ -1,0 +1,23 @@
+<project name="Guanxi" default="all">
+  <property name="samuel.dist.dir" value="samuel/dist" />
+  <property name="common.dist.dir" value="Common/dist" />
+  <property name="idp.dist.dir" value="IdP/dist" />
+  <property name="sp.dist.dir" value="SP/dist" />
+  <property name="wayf.dist.dir" value="WAYF/dist" />
+
+  <target name="all">
+    <ant antfile="build.xml" dir="samuel" target="all"/>
+    <ant antfile="build.xml" dir="Common" target="all"/>
+    <ant antfile="build.xml" dir="IdP" target="all"/>
+    <ant antfile="build.xml" dir="WAYF" target="all"/>
+    <ant antfile="build.xml" dir="SP" target="all"/>
+  </target>
+
+  <target name="clean" description="Removes distribution directories">
+    <delete dir="${samuel.dist.dir}"/>
+    <delete dir="${common.dist.dir}"/>
+    <delete dir="${idp.dist.dir}"/>
+    <delete dir="${sp.dist.dir}"/>
+    <delete dir="${wayf.dist.dir}"/>
+  </target>
+</project>
