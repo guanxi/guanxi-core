@@ -5,7 +5,7 @@
   <property name="sp.dist.dir" value="SP/dist" />
   <property name="wayf.dist.dir" value="WAYF/dist" />
 
-  <target name="all">
+  <target name="all" description="Builds all the Guanxi components">
     <ant antfile="build.xml" dir="samuel" target="all"/>
     <ant antfile="build.xml" dir="Common" target="all"/>
     <ant antfile="build.xml" dir="IdP" target="all"/>
@@ -13,29 +13,29 @@
     <ant antfile="build.xml" dir="SP" target="all"/>
   </target>
 
-  <target name="samuel">
+  <target name="samuel" description="Builds SAMUEL">
     <ant antfile="build.xml" dir="samuel" target="all"/>
   </target>
 
-  <target name="idp">
+  <target name="idp" description="Builds Guanxi::IdP">
     <ant antfile="build.xml" dir="samuel" target="all"/>
     <ant antfile="build.xml" dir="Common" target="all"/>
     <ant antfile="build.xml" dir="IdP" target="all"/>
   </target>
 
-  <target name="sp">
+  <target name="sp" description="Builds Guanxi::SP">
     <ant antfile="build.xml" dir="samuel" target="all"/>
     <ant antfile="build.xml" dir="Common" target="all"/>
     <ant antfile="build.xml" dir="SP" target="all"/>
   </target>
 
-  <target name="wayf">
+  <target name="wayf" description="Guanxi::WAYF">
     <ant antfile="build.xml" dir="samuel" target="all"/>
     <ant antfile="build.xml" dir="Common" target="all"/>
     <ant antfile="build.xml" dir="WAYF" target="all"/>
   </target>
 
-  <target name="clean" description="Removes distribution directories">
+  <target name="clean" description="Removes the Guanxi components distribution directories">
     <delete dir="${samuel.dist.dir}"/>
     <delete dir="${common.dist.dir}"/>
     <delete dir="${idp.dist.dir}"/>
