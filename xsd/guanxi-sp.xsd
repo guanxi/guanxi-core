@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<schema targetNamespace="urn:guanxi:sp"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:gx="urn:guanxi:sp"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified"
+        version="2.0">
+
+  <simpleType name="cookieAgeUnitsType">
+    <restriction base="string">
+      <enumeration value="seconds"/>
+      <enumeration value="minutes"/>
+      <enumeration value="hours"/>
+      <enumeration value="days"/>
+      <enumeration value="weeks"/>
+      <enumeration value="months"/>
+      <enumeration value="years"/>
+    </restriction>
+  </simpleType>
+
+  <complexType name="cookieAgeType">
+    <simpleContent>
+      <extension base="string">
+        <attribute name="units" type="gx:cookieAgeUnitsType"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <complexType name="cookieType">
+    <sequence>
+      <element name="Domain" type="string"/>
+      <element name="Path" type="string"/>
+      <element name="Age" type="gx:cookieAgeType"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="guardInfoType">
+    <sequence>
+      <element name="HostName" type="string"/>
+      <element name="ID" type="string"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="engineInfoType">
+    <sequence>
+      <element name="WSDL" type="string"/>
+      <element name="AuthConsumerURL" type="string"/>
+      <element name="WAYFMethod" type="string"/>
+      <element name="Timeout" type="string"/>
+    </sequence>
+  </complexType>
+
+  <element name="Guard">
+    <complexType>
+      <sequence>
+        <element name="GuardInfo" type="gx:guardInfoType" />
+        <element name="Cookie" type="gx:cookieType" />
+        <element name="EngineInfo" type="gx:engineInfoType" />
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="Engine">
+    <complexType>
+      <sequence>
+        <element name="WAYF" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+
+</schema>
