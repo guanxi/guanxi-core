@@ -29,7 +29,7 @@
     <ant antfile="build.xml" dir="SP" target="all"/>
   </target>
 
-  <target name="wayf" description="Guanxi::WAYF">
+  <target name="wayf" description="Builds Guanxi::WAYF">
     <ant antfile="build.xml" dir="samuel" target="all"/>
     <ant antfile="build.xml" dir="Common" target="all"/>
     <ant antfile="build.xml" dir="WAYF" target="all"/>
