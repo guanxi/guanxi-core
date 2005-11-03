@@ -189,4 +189,13 @@
     </complexType>
   </element>
 
+  <element name="bodington-attributor">
+    <complexType>
+      <sequence>
+        <element name="urn" type="string"/>
+        <element name="shib_urn" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
 </schema>
