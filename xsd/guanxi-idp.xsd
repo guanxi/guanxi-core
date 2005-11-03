@@ -173,4 +173,20 @@
     </complexType>
   </element>
 
+  <complexType name="cookieType">
+    <simpleContent>
+      <extension base="string">
+        <attribute name="name" type="string"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <element name="BodingtonCookieHandler">
+    <complexType>
+      <sequence>
+        <element name="cookie" type="gx:cookieType"/>
+      </sequence>
+    </complexType>
+  </element>
+
 </schema>
