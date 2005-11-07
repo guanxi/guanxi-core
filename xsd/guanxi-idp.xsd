@@ -204,7 +204,7 @@
         <element name="name" type="string"/>
         <element name="description" type="string"/>
         <element name="log-file" type="string"/>
-        <any minOccurs="0" processContents="lax"/>
+        <any minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
       </sequence>
     </complexType>
   </element>
