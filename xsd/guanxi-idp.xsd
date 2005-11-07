@@ -198,4 +198,14 @@
     </complexType>
   </element>
 
+  <element name="plugin">
+    <complexType>
+      <sequence>
+        <element name="name" type="string"/>
+        <element name="log-file" type="string"/>
+        <any minOccurs="0" processContents="lax"/>
+      </sequence>
+    </complexType>
+  </element>
+
 </schema>
