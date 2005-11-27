@@ -5,6 +5,22 @@
   <property name="sp.dist.dir" value="SP/dist" />
   <property name="wayf.dist.dir" value="WAYF/dist" />
 
+  <target name="help" description="Describes the build options">
+    <echo>
+      Welcome to the Guanxi build file.
+
+      You can either choose to build all the Guanxi components together or build the one
+      you want, without having to bother about the rest.
+
+      The options available are:
+        ant        : Builds all the Guanxi components
+        ant idp    : Builds the Guanxi Identity Provider (IdP). The IdP can be found in IdP/dist/webapp
+        ant wayf   : Builds the Guanxi WAYF. The WAYF can be found in WAYF/dist/webapp
+        ant sp     : Builds the Guanxi Service Provider (SP). The SP can be found in IdP/dist/webapp
+        ant samuel : Builds the SAMUEL SAML tookit. SAMUEL can be found in samuel/dist/jar/samuel.jar
+    </echo>
+  </target>
+
   <target name="all" description="Builds all the Guanxi components">
     <ant antfile="build.xml" dir="samuel" target="all"/>
     <ant antfile="build.xml" dir="Common" target="all"/>
