@@ -18,6 +18,7 @@
         ant wayf   : Builds the Guanxi WAYF. The WAYF can be found in WAYF/dist/webapp
         ant sp     : Builds the Guanxi Service Provider (SP). The SP can be found in IdP/dist/webapp
         ant samuel : Builds the SAMUEL SAML tookit. SAMUEL can be found in samuel/dist/jar/samuel.jar
+        ant clean  : Cleans out all previous builds of all Guanxi components
     </echo>
   </target>
 
