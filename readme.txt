@@ -74,9 +74,10 @@ IdP/dist/webapp
   This is the Guanxi Identity Provider web application. You can copy it to your
   web application root, configure and run it.
 
-SP/dist/webapp
-  This is the Guanxi Service Provider web application. You can copy it to your
-  web application root, configure and run it.
+SP/dist/webapp/guard
+SP/dist/webapp/engine
+  These are the Guanxi Service Provider web applications. You can copy them to your
+  web application root, configure and run them.
 
 WAYF/dist/webapp
   This is the Guanxi WAYF web application. You can copy it to your
@@ -91,11 +92,11 @@ Building individual Guanxi components
 If you only want one component you can control the build by specifying which one
 you want:
 
-ant idp    - builds Guanxi::IdP
-ant sp     - builds Guanxi::SP
-ant wayf   - builds Guanxi::WAYF
-ant common - builds Guanxi::Common
-ant samuel - builds SAMUEL
+ant idp       - builds Guanxi::IdP
+ant sp-guard  - builds Guanxi::SP::Guard
+ant sp-engine - builds Guanxi::SP::Engine
+ant wayf      - builds Guanxi::WAYF
+ant samuel    - builds SAMUEL
 
 The respective distribution that you've just built is in the same format as that
 described in "Building Guanxi".
