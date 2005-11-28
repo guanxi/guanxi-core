@@ -1,10 +1,4 @@
 <project name="Guanxi" default="all">
-  <property name="samuel.dist.dir" value="samuel/dist" />
-  <property name="common.dist.dir" value="Common/dist" />
-  <property name="idp.dist.dir" value="IdP/dist" />
-  <property name="sp.dist.dir" value="SP/dist" />
-  <property name="wayf.dist.dir" value="WAYF/dist" />
-
   <target name="help" description="Describes the build options">
     <echo>
       Welcome to the Guanxi build file.
@@ -13,50 +7,57 @@
       you want, without having to bother about the rest.
 
       The options available are:
-        ant        : Builds all the Guanxi components
-        ant idp    : Builds the Guanxi Identity Provider (IdP). The IdP can be found in IdP/dist/webapp
-        ant wayf   : Builds the Guanxi WAYF. The WAYF can be found in WAYF/dist/webapp
-        ant sp     : Builds the Guanxi Service Provider (SP). The SP can be found in IdP/dist/webapp
-        ant samuel : Builds the SAMUEL SAML tookit. SAMUEL can be found in samuel/dist/jar/samuel.jar
-        ant clean  : Cleans out all previous builds of all Guanxi components
+        ant           : Builds all the Guanxi components
+        ant idp       : Builds the Guanxi Identity Provider (IdP). The IdP can be found in IdP/dist/webapp
+        ant wayf      : Builds the Guanxi WAYF. The WAYF can be found in WAYF/dist/webapp
+        ant sp-guard  : Builds the Guanxi Service Provider (SP) Guard. The SP can be found in SP/dist/webapp/guard
+        ant sp-engine : Builds the Guanxi Service Provider (SP) Engine. The SP can be found in SP/dist/webapp/engine
+        ant samuel    : Builds the SAMUEL SAML tookit. SAMUEL can be found in samuel/dist/jar/samuel.jar
+        ant clean     : Cleans out all previous builds of all Guanxi components
     </echo>
   </target>
 
+  <!-- Builds the entire Guanxi suite of components -->
   <target name="all" description="Builds all the Guanxi components">
     <ant antfile="build.xml" dir="samuel" target="all"/>
     <ant antfile="build.xml" dir="Common" target="all"/>
     <ant antfile="build.xml" dir="IdP" target="all"/>
     <ant antfile="build.xml" dir="WAYF" target="all"/>
-    <ant antfile="build.xml" dir="SP" target="all"/>
+    <ant antfile="build.xml" dir="SP" target="guard"/>
+    <ant antfile="build.xml" dir="SP" target="engine"/>
   </target>
 
+  <!-- Builds SAMUEL -->
   <target name="samuel" description="Builds SAMUEL">
     <ant antfile="build.xml" dir="samuel" target="all"/>
   </target>
 
+  <!-- Builds Guanxi::IdP -->
   <target name="idp" description="Builds Guanxi::IdP">
-    <ant antfile="build.xml" dir="samuel" target="all"/>
-    <ant antfile="build.xml" dir="Common" target="all"/>
     <ant antfile="build.xml" dir="IdP" target="all"/>
   </target>
 
-  <target name="sp" description="Builds Guanxi::SP">
-    <ant antfile="build.xml" dir="samuel" target="all"/>
-    <ant antfile="build.xml" dir="Common" target="all"/>
-    <ant antfile="build.xml" dir="SP" target="all"/>
+  <!-- Builds Guanxi::SP::Guard -->
+  <target name="sp-guard" description="Builds Guanxi::SP">
+    <ant antfile="build.xml" dir="SP" target="guard"/>
   </target>
 
+  <!-- Builds Guanxi::SP::Engine -->
+  <target name="sp-engine" description="Builds Guanxi::SP">
+    <ant antfile="build.xml" dir="SP" target="engine"/>
+  </target>
+
+  <!-- Builds Guanxi::WAYF -->
   <target name="wayf" description="Builds Guanxi::WAYF">
-    <ant antfile="build.xml" dir="samuel" target="all"/>
-    <ant antfile="build.xml" dir="Common" target="all"/>
     <ant antfile="build.xml" dir="WAYF" target="all"/>
   </target>
 
+  <!-- Cleans out the Guanxi components' distribution directories -->
   <target name="clean" description="Removes the Guanxi components distribution directories">
-    <delete dir="${samuel.dist.dir}"/>
-    <delete dir="${common.dist.dir}"/>
-    <delete dir="${idp.dist.dir}"/>
-    <delete dir="${sp.dist.dir}"/>
-    <delete dir="${wayf.dist.dir}"/>
+    <ant antfile="build.xml" dir="samuel" target="clean"/>
+    <ant antfile="build.xml" dir="Common" target="clean"/>
+    <ant antfile="build.xml" dir="IdP" target="clean"/>
+    <ant antfile="build.xml" dir="WAYF" target="clean"/>
+    <ant antfile="build.xml" dir="SP" target="clean"/>
   </target>
 </project>
