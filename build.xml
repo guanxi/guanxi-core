@@ -7,13 +7,14 @@
       you want, without having to bother about the rest.
 
       The options available are:
-        ant           : Builds all the Guanxi components
-        ant idp       : Builds the Guanxi Identity Provider (IdP). The IdP can be found in IdP/dist/webapp
-        ant wayf      : Builds the Guanxi WAYF. The WAYF can be found in WAYF/dist/webapp
-        ant sp-guard  : Builds the Guanxi Service Provider (SP) Guard. The SP can be found in SP/dist/webapp/guard
-        ant sp-engine : Builds the Guanxi Service Provider (SP) Engine. The SP can be found in SP/dist/webapp/engine
-        ant samuel    : Builds the SAMUEL SAML tookit. SAMUEL can be found in samuel/dist/jar/samuel.jar
-        ant clean     : Cleans out all previous builds of all Guanxi components
+        ant             : Builds all the Guanxi components
+        ant idp         : Builds the Guanxi Identity Provider (IdP). The IdP can be found in IdP/dist/webapp
+        ant wayf        : Builds the Guanxi WAYF. The WAYF can be found in WAYF/dist/webapp
+        ant sp-guard    : Builds the Guanxi Service Provider (SP) Guard. The SP can be found in SP/dist/webapp/guard
+        ant sp-engine   : Builds the Guanxi Service Provider (SP) Engine. The SP can be found in SP/dist/webapp/engine
+        ant sp-combined : Builds the Guanxi Service Provider (SP) Engine. The SP can be found in SP/dist/webapp/engine
+        ant samuel      : Builds the SAMUEL SAML tookit. SAMUEL can be found in samuel/dist/jar/samuel.jar
+        ant clean       : Cleans out all previous builds of all Guanxi components
     </echo>
   </target>
 
@@ -38,13 +39,17 @@
   </target>
 
   <!-- Builds Guanxi::SP::Guard -->
-  <target name="sp-guard" description="Builds Guanxi::SP">
+  <target name="sp-guard" description="Builds Guanxi::SP::Guard">
     <ant antfile="build.xml" dir="SP" target="guard"/>
   </target>
 
   <!-- Builds Guanxi::SP::Engine -->
-  <target name="sp-engine" description="Builds Guanxi::SP">
+  <target name="sp-engine" description="Builds Guanxi::SP::Engine">
     <ant antfile="build.xml" dir="SP" target="engine"/>
+  </target>
+
+  <target name="sp-combined" description="Builds Guanxi::SP::Guard and Guanxi::SP::Engine combined">
+    <ant antfile="build.xml" dir="SP" target="combined"/>
   </target>
 
   <!-- Builds Guanxi::WAYF -->
