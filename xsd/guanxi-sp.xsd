@@ -15,6 +15,7 @@
       <enumeration value="weeks"/>
       <enumeration value="months"/>
       <enumeration value="years"/>
+      <enumeration value="transient"/>
     </restriction>
   </simpleType>
 
