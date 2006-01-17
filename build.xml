@@ -1,4 +1,6 @@
 <project name="Guanxi" default="all">
+  <property file="build.properties" />
+
   <target name="help" description="Describes the build options">
     <echo>
       Welcome to the Guanxi build file.
@@ -20,49 +22,49 @@
 
   <!-- Builds the entire Guanxi suite of components -->
   <target name="all" description="Builds all the Guanxi components">
-    <ant antfile="build.xml" dir="samuel" target="all"/>
-    <ant antfile="build.xml" dir="Common" target="all"/>
-    <ant antfile="build.xml" dir="IdP" target="all"/>
-    <ant antfile="build.xml" dir="WAYF" target="all"/>
-    <ant antfile="build.xml" dir="SP" target="guard"/>
-    <ant antfile="build.xml" dir="SP" target="engine"/>
+    <ant antfile="build.xml" dir="${samuel.home}" target="all"/>
+    <ant antfile="build.xml" dir="${guanxi-common.home}" target="all"/>
+    <ant antfile="build.xml" dir="${guanxi-idp.home}" target="all"/>
+    <ant antfile="build.xml" dir="${guanxi-wayf.home}" target="all"/>
+    <ant antfile="build.xml" dir="${guanxi-sp.home}" target="guard"/>
+    <ant antfile="build.xml" dir="${guanxi-sp.home}" target="engine"/>
   </target>
 
   <!-- Builds SAMUEL -->
   <target name="samuel" description="Builds SAMUEL">
-    <ant antfile="build.xml" dir="samuel" target="all"/>
+    <ant antfile="build.xml" dir="${samuel.home}" target="all"/>
   </target>
 
   <!-- Builds Guanxi::IdP -->
   <target name="idp" description="Builds Guanxi::IdP">
-    <ant antfile="build.xml" dir="IdP" target="all"/>
+    <ant antfile="build.xml" dir="${guanxi-idp.home}" target="all"/>
   </target>
 
   <!-- Builds Guanxi::SP::Guard -->
   <target name="sp-guard" description="Builds Guanxi::SP::Guard">
-    <ant antfile="build.xml" dir="SP" target="guard"/>
+    <ant antfile="build.xml" dir="${guanxi-sp.home}" target="guard"/>
   </target>
 
   <!-- Builds Guanxi::SP::Engine -->
   <target name="sp-engine" description="Builds Guanxi::SP::Engine">
-    <ant antfile="build.xml" dir="SP" target="engine"/>
+    <ant antfile="build.xml" dir="${guanxi-sp.home}" target="engine"/>
   </target>
 
   <target name="sp-combined" description="Builds Guanxi::SP::Guard and Guanxi::SP::Engine combined">
-    <ant antfile="build.xml" dir="SP" target="combined"/>
+    <ant antfile="build.xml" dir="${guanxi-sp.home}" target="combined"/>
   </target>
 
   <!-- Builds Guanxi::WAYF -->
   <target name="wayf" description="Builds Guanxi::WAYF">
-    <ant antfile="build.xml" dir="WAYF" target="all"/>
+    <ant antfile="build.xml" dir="${guanxi-wayf.home}" target="all"/>
   </target>
 
   <!-- Cleans out the Guanxi components' distribution directories -->
   <target name="clean" description="Removes the Guanxi components distribution directories">
-    <ant antfile="build.xml" dir="samuel" target="clean"/>
-    <ant antfile="build.xml" dir="Common" target="clean"/>
-    <ant antfile="build.xml" dir="IdP" target="clean"/>
-    <ant antfile="build.xml" dir="WAYF" target="clean"/>
-    <ant antfile="build.xml" dir="SP" target="clean"/>
+    <ant antfile="build.xml" dir="${samuel.home}" target="clean"/>
+    <ant antfile="build.xml" dir="${guanxi-common.home}" target="clean"/>
+    <ant antfile="build.xml" dir="${guanxi-idp.home}" target="clean"/>
+    <ant antfile="build.xml" dir="${guanxi-wayf.home}" target="clean"/>
+    <ant antfile="build.xml" dir="${guanxi-sp.home}" target="clean"/>
   </target>
 </project>
