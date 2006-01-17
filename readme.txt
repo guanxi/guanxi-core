@@ -14,7 +14,7 @@ Introduction
 The Guanxi system will let you do all sorts of Shibboleth compatible single sign on (SSO)
 things. It implements the Shibboleth Profile of the SAML1.1 specification. Don't get
 confused with the Internet2 Shibboleth software, which is the reference implementation of
-the Shibboleth SAML Profile. Guanxi is the other implementation.
+the Shibboleth SAML Profile. Guanxi is another implementation.
 Born on the Isle of Skye in the Inner Hebrides of Scotland. Guanxi started life as a
 UK JISC funded core middleware project, lead by the University of the Highlands and Islands
 in partnership with the University of Oxford and Leeds University. Contrary to popular opinion,
@@ -26,11 +26,12 @@ If you think it does, tell us. If you don't, tell us anyway.
 Directory structure
 -------------------
 After you've got hold of Guanxi from sourceforge, you'll have the following directories to
-play with. We'll assume you've done the default and now you've got a directory called "guanxi".
-Let's cd into guanxi and see what's in there.
+play with. We'll assume you've done the default and now you've got a directory called "Core".
+Let's cd into Core and see what's in there.
 
-.
-Contains the Guanxi build file and this readme information file
+Core
+  Contains the Guanxi build file and this readme information file. Also contains the XML schema
+  files and the localised system messages used by the other components.
 
 Common
   Contains the Guanxi common component (Guanxi::Common). This is a generic component that is used by the
@@ -60,7 +61,7 @@ gx_lib
 Building Guanxi
 ---------------
 Building Guanxi is a breeze! Now that you've checked out or downloaded the source
-distribution, all you have to do is move to the guanxi directory and type:
+distribution, all you have to do is move to the Core directory and type:
 
 ant
 
@@ -92,11 +93,12 @@ Building individual Guanxi components
 If you only want one component you can control the build by specifying which one
 you want:
 
-ant idp       - builds Guanxi::IdP
-ant sp-guard  - builds Guanxi::SP::Guard
-ant sp-engine - builds Guanxi::SP::Engine
-ant wayf      - builds Guanxi::WAYF
-ant samuel    - builds SAMUEL
+ant idp         - builds Guanxi::IdP
+ant sp-guard    - builds Guanxi::SP::Guard
+ant sp-engine   - builds Guanxi::SP::Engine
+ant sp-combined - builds a combined Guanxi::SP::Guard and Guanxi::SP::Engine
+ant wayf        - builds Guanxi::WAYF
+ant samuel      - builds SAMUEL
 
 The respective distribution that you've just built is in the same format as that
 described in "Building Guanxi".
