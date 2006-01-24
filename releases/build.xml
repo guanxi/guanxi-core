@@ -1,0 +1,256 @@
+<project name="Guanxi Release" default="help">
+  <!-- This file contains static locations for the Guanxi modules -->
+  <property file="build.properties" />
+
+  <!-- These files are module release specific -->
+  <property file="${release.properties.dir}/sp.release.properties" />
+  <property file="${release.properties.dir}/idp.release.properties" />
+  <property file="${release.properties.dir}/wayf.release.properties" />
+  <property file="${release.properties.dir}/samuel.release.properties" />
+
+  <!-- Sourceforge anonymous user checkout details -->
+  <property name="cvs.anon" value=":pserver:anonymous@cvs.sourceforge.net:/cvsroot/guanxi" />
+  <property name="cvs.anon.password" value="" />
+
+  <!-- Sourceforge CVS user checkout details -->
+  <property name="cvs.user" value=":ext:${release.user}@cvs.sourceforge.net:/cvsroot/guanxi" />
+  <property name="cvs.user.password" value="${release.user.password}" />
+
+  <!-- Which CVS user to use for checking out modules -->
+  <property name="cvs.root" value="${cvs.user}" />
+  <property name="cvs.root.password" value="${cvs.user.password}" />
+
+  <!-- The checkout directory, to where the modules are checked out -->
+  <property name="tmp.dir" value="tmp" />
+
+  <!-- Where the modules are checked out to in the checkout directory -->
+  <property name="core.dir" value="${tmp.dir}/${tmp.guanxi-core.home}" />
+  <property name="samuel.dir" value="${tmp.dir}/${tmp.samuel.home}" />
+  <property name="common.dir" value="${tmp.dir}/${tmp.guanxi-common.home}" />
+  <property name="idp.dir" value="${tmp.dir}/${tmp.guanxi-idp.home}" />
+  <property name="wayf.dir" value="${tmp.dir}/${tmp.guanxi-wayf.home}" />
+  <property name="sp.dir" value="${tmp.dir}/${tmp.guanxi-sp.home}" />
+
+  <!-- Displays instructions on how to use this build file -->
+  <target name="help" description="Explains this build file">
+    <echo>
+      Guanxi releases
+    </echo>
+  </target>
+
+  <target name="release-idp" description="Builds a release of the Guanxi IdP">
+
+    <!-- Where the IdP release files will be -->
+    <property name="idp.release.dir" value="guanxi-idp-bin-${release.version}" />
+
+    <echo>
+      Building Guanxi IdP ${release.version} on ${release.date}
+
+      Using tags:
+        -- Guanxi::IdP    : ${release.idp.cvs.tag}
+        -- Guanxi::Core   : ${release.core.cvs.tag}
+        -- Guanxi::Common : ${release.common.cvs.tag}
+        -- SAMUEL         : ${release.samuel.cvs.tag}
+        -- gx_lib         : ${release.gx_lib.cvs.tag}
+    </echo>
+
+    <delete dir="${tmp.dir}" />
+    <mkdir dir="${idp.release.dir}" />
+    <mkdir dir="${tmp.dir}" />
+
+    <!-- Get the common modules from CVS -->
+    <antcall target="getCommonModules" />
+
+    <!-- Get Guanxi::IdP from CVS -->
+    <cvs cvsRoot="${cvs.root}"
+         package="IdP"
+         tag="${release.idp.cvs.tag}"
+         dest="${tmp.dir}" />
+
+    <!-- Use the Core module to build the SP Engine and Guard -->
+    <ant antfile="build.xml" dir="${core.dir}" target="idp"/>
+
+    <!-- Build a release archive -->
+    <tar tarfile="${tmp.dir}/guanxi-idp-bin-${release.version}.tar" basedir="${tmp.dir}/${tmp.guanxi-idp.bin.dir}" />
+    <gzip zipfile="${tmp.dir}/guanxi-idp-bin-${release.version}.tar.gz" src="${tmp.dir}/guanxi-idp-bin-${release.version}.tar" />
+    <delete file="${tmp.dir}/guanxi-idp-bin-${release.version}.tar" />
+    <move file="${tmp.dir}/guanxi-idp-bin-${release.version}.tar.gz" toDir="${idp.release.dir}" />
+
+    <!-- Copy the config files to build this release again -->
+    <antcall target="copyBuildFiles">
+      <param name="module.release.dir" value="${idp.release.dir}" />
+    </antcall>
+  </target>
+
+  <target name="release-sp" description="Builds a release of the Guanxi SP">
+
+    <!-- Where the SP release files will be -->
+    <property name="sp.release.dir" value="guanxi-sp-bin-${release.version}" />
+
+    <echo>
+      Building Guanxi SP ${release.version} on ${release.date}
+
+      Using tags:
+        -- Guanxi::SP     : ${release.sp.cvs.tag}
+        -- Guanxi::Core   : ${release.core.cvs.tag}
+        -- Guanxi::Common : ${release.common.cvs.tag}
+        -- SAMUEL         : ${release.samuel.cvs.tag}
+        -- gx_lib         : ${release.gx_lib.cvs.tag}
+    </echo>
+
+    <delete dir="${tmp.dir}" />
+    <mkdir dir="${sp.release.dir}" />
+    <mkdir dir="${tmp.dir}" />
+
+    <!-- Get the common modules from CVS -->
+    <antcall target="getCommonModules" />
+
+    <!-- Get Guanxi::SP from CVS -->
+    <cvs cvsRoot="${cvs.root}"
+         package="SP"
+         tag="${release.sp.cvs.tag}"
+         dest="${tmp.dir}" />
+
+    <!-- Use the Core module to build the SP Engine and Guard -->
+    <ant antfile="build.xml" dir="${core.dir}" target="sp-guard"/>
+    <ant antfile="build.xml" dir="${core.dir}" target="sp-engine"/>
+
+    <!-- Build a Guard release archive -->
+    <tar tarfile="${tmp.dir}/guanxi-sp-guard-bin-${release.version}.tar" basedir="${tmp.dir}/${tmp.guanxi-sp-guard.bin.dir}" />
+    <gzip zipfile="${tmp.dir}/guanxi-sp-guard-bin-${release.version}.tar.gz" src="${tmp.dir}/guanxi-sp-guard-bin-${release.version}.tar" />
+    <delete file="${tmp.dir}/guanxi-sp-guard-bin-${release.version}.tar" />
+    <move file="${tmp.dir}/guanxi-sp-guard-bin-${release.version}.tar.gz" toDir="${sp.release.dir}" />
+
+    <!-- Build an Engine release archive -->
+    <tar tarfile="${tmp.dir}/guanxi-sp-engine-bin-${release.version}.tar" basedir="${tmp.dir}/${tmp.guanxi-sp-engine.bin.dir}" />
+    <gzip zipfile="${tmp.dir}/guanxi-sp-engine-bin-${release.version}.tar.gz" src="${tmp.dir}/guanxi-sp-engine-bin-${release.version}.tar" />
+    <delete file="${tmp.dir}/guanxi-sp-engine-bin-${release.version}.tar" />
+    <move file="${tmp.dir}/guanxi-sp-engine-bin-${release.version}.tar.gz" toDir="${sp.release.dir}" />
+
+    <!-- Copy the config files to build this release again -->
+    <antcall target="copyBuildFiles">
+      <param name="module.release.dir" value="${idp.release.dir}" />
+    </antcall>
+  </target>
+
+  <target name="release-wayf" description="Builds a release of the Guanxi WAYF">
+
+    <!-- Where the WAYF release files will be -->
+    <property name="wayf.release.dir" value="guanxi-wayf-bin-${release.version}" />
+
+    <echo>
+      Building Guanxi WAYF ${release.version} on ${release.date}
+
+      Using tags:
+        -- Guanxi::WAYF   : ${release.wayf.cvs.tag}
+        -- Guanxi::Core   : ${release.core.cvs.tag}
+        -- Guanxi::Common : ${release.common.cvs.tag}
+        -- SAMUEL         : ${release.samuel.cvs.tag}
+        -- gx_lib         : ${release.gx_lib.cvs.tag}
+    </echo>
+
+    <delete dir="${tmp.dir}" />
+    <mkdir dir="${wayf.release.dir}" />
+    <mkdir dir="${tmp.dir}" />
+
+    <!-- Get the common modules from CVS -->
+    <antcall target="getCommonModules" />
+
+    <!-- Get Guanxi::WAYF from CVS -->
+    <cvs cvsRoot="${cvs.root}"
+         package="WAYF"
+         tag="${release.wayf.cvs.tag}"
+         dest="${tmp.dir}" />
+
+    <!-- Use the Core module to build the WAYF -->
+    <ant antfile="build.xml" dir="${core.dir}" target="wayf"/>
+
+    <!-- Build a release archive -->
+    <tar tarfile="${tmp.dir}/guanxi-wayf-bin-${release.version}.tar" basedir="${tmp.dir}/${tmp.guanxi-wayf.bin.dir}" />
+    <gzip zipfile="${tmp.dir}/guanxi-wayf-bin-${release.version}.tar.gz" src="${tmp.dir}/guanxi-wayf-bin-${release.version}.tar" />
+    <delete file="${tmp.dir}/guanxi-wayf-bin-${release.version}.tar" />
+    <move file="${tmp.dir}/guanxi-wayf-bin-${release.version}.tar.gz" toDir="${wayf.release.dir}" />
+
+    <!-- Copy the config files to build this release again -->
+    <antcall target="copyBuildFiles">
+      <param name="module.release.dir" value="${idp.release.dir}" />
+    </antcall>
+  </target>
+
+  <target name="release-samuel" description="Builds a release of SAMUEL">
+
+    <!-- Where the SAMUEL release files will be -->
+    <property name="samuel.release.dir" value="samuel-bin-${release.version}" />
+
+    <echo>
+      Building SAMUEL ${release.version} on ${release.date}
+
+      Using tags:
+        -- Guanxi::Core   : ${release.core.cvs.tag}
+        -- SAMUEL         : ${release.samuel.cvs.tag}
+        -- gx_lib         : ${release.gx_lib.cvs.tag}
+    </echo>
+
+    <delete dir="${tmp.dir}" />
+    <mkdir dir="${samuel.release.dir}" />
+    <mkdir dir="${tmp.dir}" />
+
+    <!-- Get the common modules from CVS -->
+    <antcall target="getCommonModules" />
+
+    <!-- Get SAMUEL from CVS -->
+    <cvs cvsRoot="${cvs.root}"
+         package="samuel"
+         tag="${release.samuel.cvs.tag}"
+         dest="${tmp.dir}" />
+
+    <!-- Use the Core module to build SAMUEL -->
+    <ant antfile="build.xml" dir="${core.dir}" target="samuel"/>
+
+    <!-- Build a release archive -->
+    <tar tarfile="${tmp.dir}/samuel-bin-${release.version}.tar" basedir="${tmp.dir}/${tmp.samuel.bin.dir}" />
+    <gzip zipfile="${tmp.dir}/samuel-bin-${release.version}.tar.gz" src="${tmp.dir}/samuel-bin-${release.version}.tar" />
+    <delete file="${tmp.dir}/samuel-bin-${release.version}.tar" />
+    <move file="${tmp.dir}/samuel-bin-${release.version}.tar.gz" toDir="${samuel.release.dir}" />
+
+    <!-- Copy the config files to build this release again -->
+    <antcall target="copyBuildFiles">
+      <param name="module.release.dir" value="${samuel.release.dir}" />
+    </antcall>
+  </target>
+
+  <target name="getCommonModules" description="Checks out the modules required by the main Guanxi components">
+    <!-- Get Guanxi::Core from CVS -->
+    <cvs cvsRoot="${cvs.root}"
+         package="Core"
+         tag="${release.core.cvs.tag}"
+         dest="${tmp.dir}" />
+
+    <!-- Get Guanxi::Common from CVS -->
+    <cvs cvsRoot="${cvs.root}"
+         package="Common"
+         tag="${release.common.cvs.tag}"
+         dest="${tmp.dir}" />
+
+    <!-- Get SAMUEL from CVS -->
+    <cvs cvsRoot="${cvs.root}"
+         package="samuel"
+         tag="${release.samuel.cvs.tag}"
+         dest="${tmp.dir}" />
+
+    <!-- Get gx_lib from CVS -->
+    <cvs cvsRoot="${cvs.root}"
+         package="gx_lib"
+         tag="${release.gx_lib.cvs.tag}"
+         dest="${tmp.dir}" />
+  </target>
+
+  <target name="copyBuildFiles" description="Copies the files used to create the release">
+    <copy file="build.xml" toDir="${module.release.dir}/config" />
+    <copy file="build.properties" toDir="${module.release.dir}/config" />
+
+    <copy todir="${module.release.dir}/config/${release.properties.dir}">
+      <fileset dir="${release.properties.dir}" />
+    </copy>
+  </target>
+</project>
