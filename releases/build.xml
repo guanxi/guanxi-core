@@ -20,9 +20,6 @@
   <property name="cvs.root" value="${cvs.user}" />
   <property name="cvs.root.password" value="${cvs.user.password}" />
 
-  <!-- The checkout directory, to where the modules are checked out -->
-  <property name="tmp.dir" value="tmp" />
-
   <!-- Where the modules are checked out to in the checkout directory -->
   <property name="core.dir" value="${tmp.dir}/${tmp.guanxi-core.home}" />
   <property name="samuel.dir" value="${tmp.dir}/${tmp.samuel.home}" />
