@@ -1,0 +1,33 @@
+How to build Guanxi releases
+============================
+
+o Files in this directory
+o Available release targets
+o Build configurations
+o Release configurations
+
+Files in this directory
+=======================
+In this directory you'll find two build files:
+build.xml - controls the release building process
+build.properties - configuration file for build.xml
+
+and a directory:
+config - this holds all the module checkout configuration files
+
+Available release targets
+=========================
+To see what can be released, use the command:
+
+ant
+
+This will display a list of release targets in the build file
+
+Build configurations
+====================
+build.properties specifies all the paths for the build process
+
+Release configurations
+======================
+Individual module release configuration files are stored in the [build.properties].release.properties.dir
+Each module has it's own properties file telling the build process what to check out and what tags to use.
