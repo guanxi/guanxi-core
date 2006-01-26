@@ -79,16 +79,16 @@
     <!-- Build a source release archive -->
     <copy todir="${idp.release.dir}/guanxi-idp-src-${release.version}">
       <fileset dir="${tmp.dir}">
-        <include name="${tmp.guanxi-core.home}/**/*.*"/>
-        <include name="${tmp.guanxi-common.home}/**/*.*"/>
-        <include name="${tmp.samuel.home}/**/*.*"/>
-        <include name="${tmp.guanxi-gx_lib.home}/**/*.*"/>
-        <include name="${tmp.guanxi-idp.home}/**/*.*"/>
+        <include name="${tmp.guanxi-core.home}/**"/>
+        <include name="${tmp.guanxi-common.home}/**"/>
+        <include name="${tmp.samuel.home}/**"/>
+        <include name="${tmp.guanxi-gx_lib.home}/**"/>
+        <include name="${tmp.guanxi-idp.home}/**"/>
       </fileset>
     </copy>
     <tar tarfile="${idp.release.dir}/guanxi-idp-src-${release.version}.tar">
       <tarfileset dir="${idp.release.dir}">
-        <include name="guanxi-idp-src-${release.version}/**/*.*"/>
+        <include name="guanxi-idp-src-${release.version}/**"/>
       </tarfileset>
     </tar>
     <gzip zipfile="${idp.release.dir}/guanxi-idp-src-${release.version}.tar.gz" src="${idp.release.dir}/guanxi-idp-src-${release.version}.tar" />
@@ -99,12 +99,12 @@
     <!-- Build a binary release archive -->
     <copy todir="${idp.release.dir}/guanxi-idp-bin-${release.version}">
       <fileset dir="${tmp.dir}/${tmp.guanxi-idp.bin.dir}">
-        <include name="**/*.*"/>
+        <include name="**"/>
       </fileset>
     </copy>
     <tar tarfile="${idp.release.dir}/guanxi-idp-bin-${release.version}.tar">
       <tarfileset dir="${idp.release.dir}">
-        <include name="guanxi-idp-bin-${release.version}/**/*.*"/>
+        <include name="guanxi-idp-bin-${release.version}/**"/>
       </tarfileset>
     </tar>
     <gzip zipfile="${idp.release.dir}/guanxi-idp-bin-${release.version}.tar.gz" src="${idp.release.dir}/guanxi-idp-bin-${release.version}.tar" />
@@ -156,16 +156,16 @@
     <!-- Build a source release archive -->
     <copy todir="${sp.release.dir}/guanxi-sp-src-${release.version}">
       <fileset dir="${tmp.dir}">
-        <include name="${tmp.guanxi-core.home}/**/*.*"/>
-        <include name="${tmp.guanxi-common.home}/**/*.*"/>
-        <include name="${tmp.samuel.home}/**/*.*"/>
-        <include name="${tmp.guanxi-gx_lib.home}/**/*.*"/>
-        <include name="${tmp.guanxi-sp.home}/**/*.*"/>
+        <include name="${tmp.guanxi-core.home}/**"/>
+        <include name="${tmp.guanxi-common.home}/**"/>
+        <include name="${tmp.samuel.home}/**"/>
+        <include name="${tmp.guanxi-gx_lib.home}/**"/>
+        <include name="${tmp.guanxi-sp.home}/**"/>
       </fileset>
     </copy>
     <tar tarfile="${sp.release.dir}/guanxi-sp-src-${release.version}.tar">
       <tarfileset dir="${sp.release.dir}">
-        <include name="guanxi-sp-src-${release.version}/**/*.*"/>
+        <include name="guanxi-sp-src-${release.version}/**"/>
       </tarfileset>
     </tar>
     <gzip zipfile="${sp.release.dir}/guanxi-sp-src-${release.version}.tar.gz" src="${sp.release.dir}/guanxi-sp-src-${release.version}.tar" />
@@ -177,25 +177,25 @@
     <!-- Build a Guard binary release archive -->
     <copy todir="${sp.release.dir}/guanxi-sp-guard-bin-${release.version}">
       <fileset dir="${tmp.dir}/${tmp.guanxi-sp-guard.bin.dir}">
-        <include name="**/*.*"/>
+        <include name="**"/>
       </fileset>
     </copy>
     <tar tarfile="${sp.release.dir}/guanxi-sp-guard-bin-${release.version}.tar">
       <tarfileset dir="${sp.release.dir}">
-        <include name="guanxi-sp-guard-bin-${release.version}/**/*.*"/>
+        <include name="guanxi-sp-guard-bin-${release.version}/**"/>
       </tarfileset>
     </tar>
     <gzip zipfile="${sp.release.dir}/guanxi-sp-guard-bin-${release.version}.tar.gz" src="${sp.release.dir}/guanxi-sp-guard-bin-${release.version}.tar" />
 
     <!-- Build an Engine binary release archive -->
-    <copy todir="${sp.release.dir}/guanxi-sp-engine-bin-${release.version}">
+    <copy todir="${sp.release.dir}/guanxi-sp-engine-bin-${release.version}" includeEmptyDirs="true">
       <fileset dir="${tmp.dir}/${tmp.guanxi-sp-engine.bin.dir}">
-        <include name="**/*.*"/>
+        <include name="**"/>
       </fileset>
     </copy>
     <tar tarfile="${sp.release.dir}/guanxi-sp-engine-bin-${release.version}.tar">
       <tarfileset dir="${sp.release.dir}">
-        <include name="guanxi-sp-engine-bin-${release.version}/**/*.*"/>
+        <include name="guanxi-sp-engine-bin-${release.version}/**"/>
       </tarfileset>
     </tar>
     <gzip zipfile="${sp.release.dir}/guanxi-sp-engine-bin-${release.version}.tar.gz" src="${sp.release.dir}/guanxi-sp-engine-bin-${release.version}.tar" />
@@ -249,16 +249,16 @@
     <!-- Build a source release archive -->
     <copy todir="${wayf.release.dir}/guanxi-wayf-src-${release.version}">
       <fileset dir="${tmp.dir}">
-        <include name="${tmp.guanxi-core.home}/**/*.*"/>
-        <include name="${tmp.guanxi-common.home}/**/*.*"/>
-        <include name="${tmp.samuel.home}/**/*.*"/>
-        <include name="${tmp.guanxi-gx_lib.home}/**/*.*"/>
-        <include name="${tmp.guanxi-wayf.home}/**/*.*"/>
+        <include name="${tmp.guanxi-core.home}/**"/>
+        <include name="${tmp.guanxi-common.home}/**"/>
+        <include name="${tmp.samuel.home}/**"/>
+        <include name="${tmp.guanxi-gx_lib.home}/**"/>
+        <include name="${tmp.guanxi-wayf.home}/**"/>
       </fileset>
     </copy>
     <tar tarfile="${wayf.release.dir}/guanxi-wayf-src-${release.version}.tar">
       <tarfileset dir="${wayf.release.dir}">
-        <include name="guanxi-wayf-src-${release.version}/**/*.*"/>
+        <include name="guanxi-wayf-src-${release.version}/**"/>
       </tarfileset>
     </tar>
     <gzip zipfile="${wayf.release.dir}/guanxi-wayf-src-${release.version}.tar.gz" src="${wayf.release.dir}/guanxi-wayf-src-${release.version}.tar" />
@@ -269,12 +269,12 @@
     <!-- Build a binary release archive -->
     <copy todir="${wayf.release.dir}/guanxi-wayf-bin-${release.version}">
       <fileset dir="${tmp.dir}/${tmp.guanxi-wayf.bin.dir}">
-        <include name="**/*.*"/>
+        <include name="**"/>
       </fileset>
     </copy>
     <tar tarfile="${wayf.release.dir}/guanxi-wayf-bin-${release.version}.tar">
       <tarfileset dir="${wayf.release.dir}">
-        <include name="guanxi-wayf-bin-${release.version}/**/*.*"/>
+        <include name="guanxi-wayf-bin-${release.version}/**"/>
       </tarfileset>
     </tar>
     <gzip zipfile="${wayf.release.dir}/guanxi-wayf-bin-${release.version}.tar.gz" src="${wayf.release.dir}/guanxi-wayf-bin-${release.version}.tar" />
@@ -325,14 +325,14 @@
     <!-- Build a source release archive -->
     <copy todir="${samuel.release.dir}/samuel-src-${release.version}">
       <fileset dir="${tmp.dir}">
-        <include name="${tmp.guanxi-core.home}/**/*.*"/>
-        <include name="${tmp.samuel.home}/**/*.*"/>
-        <include name="${tmp.guanxi-gx_lib.home}/**/*.*"/>
+        <include name="${tmp.guanxi-core.home}/**"/>
+        <include name="${tmp.samuel.home}/**"/>
+        <include name="${tmp.guanxi-gx_lib.home}/**"/>
       </fileset>
     </copy>
     <tar tarfile="${samuel.release.dir}/samuel-src-${release.version}.tar">
       <tarfileset dir="${samuel.release.dir}">
-        <include name="samuel-src-${release.version}/**/*.*"/>
+        <include name="samuel-src-${release.version}/**"/>
       </tarfileset>
     </tar>
     <gzip zipfile="${samuel.release.dir}/samuel-src-${release.version}.tar.gz" src="${samuel.release.dir}/samuel-src-${release.version}.tar" />
@@ -343,12 +343,12 @@
     <!-- Build a binary release archive -->
     <copy todir="${samuel.release.dir}/samuel-bin-${release.version}">
       <fileset dir="${tmp.dir}/${tmp.samuel.bin.dir}">
-        <include name="**/*.*"/>
+        <include name="**"/>
       </fileset>
     </copy>
     <tar tarfile="${samuel.release.dir}/samuel-bin-${release.version}.tar">
       <tarfileset dir="${samuel.release.dir}">
-        <include name="samuel-bin-${release.version}/**/*.*"/>
+        <include name="samuel-bin-${release.version}/**"/>
       </tarfileset>
     </tar>
     <gzip zipfile="${samuel.release.dir}/samuel-bin-${release.version}.tar.gz" src="${samuel.release.dir}/samuel-bin-${release.version}.tar" />
@@ -399,12 +399,12 @@
     <!-- Build a source release archive -->
     <copy todir="${gx-src.release.dir}/guanxi-src-${release.version}">
       <fileset dir="${tmp.dir}">
-        <include name="**/*.*"/>
+        <include name="**"/>
       </fileset>
     </copy>
     <tar tarfile="${gx-src.release.dir}/guanxi-src-${release.version}.tar">
       <tarfileset dir="${gx-src.release.dir}">
-        <include name="guanxi-src-${release.version}/**/*.*"/>
+        <include name="guanxi-src-${release.version}/**"/>
       </tarfileset>
     </tar>
     <gzip zipfile="${gx-src.release.dir}/guanxi-src-${release.version}.tar.gz" src="${gx-src.release.dir}/guanxi-src-${release.version}.tar" />
