@@ -69,10 +69,7 @@
     <antcall target="getCommonModules" />
 
     <!-- Get Guanxi::IdP from CVS -->
-    <cvs cvsRoot="${cvs.root}"
-         package="IdP"
-         tag="${release.idp.cvs.tag}"
-         dest="${tmp.dir}" />
+    <antcall target="getIdP" />
 
     <!-- Clean out any old builds -->
     <ant antfile="build.xml" dir="${tmp.dir}/${tmp.guanxi-idp.home}" target="clean"/>
@@ -149,10 +146,7 @@
     <antcall target="getCommonModules" />
 
     <!-- Get Guanxi::SP from CVS -->
-    <cvs cvsRoot="${cvs.root}"
-         package="SP"
-         tag="${release.sp.cvs.tag}"
-         dest="${tmp.dir}" />
+    <antcall target="getSP" />
 
     <!-- Clean out any old builds -->
     <ant antfile="build.xml" dir="${tmp.dir}/${tmp.guanxi-sp.home}" target="clean"/>
@@ -245,10 +239,7 @@
     <antcall target="getCommonModules" />
 
     <!-- Get Guanxi::WAYF from CVS -->
-    <cvs cvsRoot="${cvs.root}"
-         package="WAYF"
-         tag="${release.wayf.cvs.tag}"
-         dest="${tmp.dir}" />
+    <antcall target="getWAYF" />
 
     <!-- Clean out any old builds -->
     <ant antfile="build.xml" dir="${tmp.dir}/${tmp.guanxi-wayf.home}" target="clean"/>
@@ -375,6 +366,60 @@
     <delete dir="${samuel.release.dir}/samuel-src-${release.version}" />
   </target>
 
+  <target name="release-guanxi-src" description="Builds a release of the Guanxi source">
+
+    <!-- Where the IdP release files will be -->
+    <property name="gx-src.release.dir" value="guanxi-src-release-${release.version}" />
+
+    <echo>
+      Releasing Guanxi source ${release.version} on ${release.date}
+
+      Using tags:
+        -- Guanxi::IdP    : ${release.idp.cvs.tag}
+        -- Guanxi::SP     : ${release.sp.cvs.tag}
+        -- Guanxi::Core   : ${release.core.cvs.tag}
+        -- Guanxi::Common : ${release.common.cvs.tag}
+        -- SAMUEL         : ${release.samuel.cvs.tag}
+        -- gx_lib         : ${release.gx_lib.cvs.tag}
+    </echo>
+
+    <delete dir="${tmp.dir}" />
+    <mkdir dir="${gx-src.release.dir}" />
+    <mkdir dir="${tmp.dir}" />
+
+    <!-- Get all the modules from CVS -->
+    <antcall target="getCommonModules" />
+    <antcall target="getIdP" />
+    <antcall target="getSP" />
+    <antcall target="getWAYF" />
+
+    <!-- Clean out any old builds -->
+    <ant antfile="build.xml" dir="${core.dir}" target="clean"/>
+
+    <!-- Build a source release archive -->
+    <copy todir="${gx-src.release.dir}/guanxi-src-${release.version}">
+      <fileset dir="${tmp.dir}">
+        <include name="**/*.*"/>
+      </fileset>
+    </copy>
+    <tar tarfile="${gx-src.release.dir}/guanxi-src-${release.version}.tar">
+      <tarfileset dir="${gx-src.release.dir}">
+        <include name="guanxi-src-${release.version}/**/*.*"/>
+      </tarfileset>
+    </tar>
+    <gzip zipfile="${gx-src.release.dir}/guanxi-src-${release.version}.tar.gz" src="${gx-src.release.dir}/guanxi-src-${release.version}.tar" />
+
+    <!-- Copy the config files to build this release again -->
+    <antcall target="copyBuildFiles">
+      <param name="module.release.dir" value="${idp.release.dir}" />
+      <param name="properties.file" value="${release.properties.dir}/gx-src.release.properties" />
+    </antcall>
+
+    <!-- Tidy up -->
+    <delete file="${gx-src.release.dir}/guanxi-src-${release.version}.tar" />
+    <delete dir="${gx-src.release.dir}/guanxi-src-${release.version}" />
+  </target>
+
   <target name="getCommonModules" description="Checks out the modules required by the main Guanxi components">
     <!-- Get Guanxi::Core from CVS -->
     <cvs cvsRoot="${cvs.root}"
@@ -398,6 +443,29 @@
     <cvs cvsRoot="${cvs.root}"
          package="gx_lib"
          tag="${release.gx_lib.cvs.tag}"
+         dest="${tmp.dir}" />
+  </target>
+
+  <target name="getIdP" description="Checks out the IdP from CVS">
+    <!-- Get Guanxi::IdP from CVS -->
+    <cvs cvsRoot="${cvs.root}"
+         package="IdP"
+         tag="${release.idp.cvs.tag}"
+         dest="${tmp.dir}" />
+  </target>
+
+  <target name="getSP" description="Checks out the SP from CVS">
+    <!-- Get Guanxi::SP from CVS -->
+    <cvs cvsRoot="${cvs.root}"
+         package="SP"
+         tag="${release.sp.cvs.tag}"
+         dest="${tmp.dir}" />
+  </target>
+
+  <target name="getWAYF" description="Checks out the WAYF from CVS">
+    <cvs cvsRoot="${cvs.root}"
+         package="WAYF"
+         tag="${release.wayf.cvs.tag}"
          dest="${tmp.dir}" />
   </target>
 
