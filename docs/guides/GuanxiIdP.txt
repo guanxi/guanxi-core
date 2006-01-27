@@ -520,7 +520,7 @@ IdP web application. You're now ready to see what your IdP is releasing to the o
 
 To check what your IdP looks like to Service Providers, point your browser at the following url:
 
-http://guanxi.uhi.ac.uk/gxskye/idpcheck.jsp
+http://guanxi.uhi.ac.uk/gxskye/gxskye/idpcheck.jsp
 
 This will display the gxSkye WAYF. You must then choose your IdP from the list, using the name you specified. You
 will then be redirected to your IdP, where you must authenticate. You will then be returned to the requested resource.
