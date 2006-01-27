@@ -36,10 +36,11 @@
       The following targets are available for building release versions
       of the Guanxi components:
 
-      ant release-idp    : Build source and binary releases of the IdP
-      ant release-sp     : Build source and binary releases of the SP Engine and Guard
-      ant release-wayf   : Build source and binary releases of the WAYF
-      ant release-samuel : Build source and binary releases of SAMUEL
+      ant release-idp        : Build source and binary releases of the IdP
+      ant release-sp         : Build source and binary releases of the SP Engine and Guard
+      ant release-wayf       : Build source and binary releases of the WAYF
+      ant release-samuel     : Build source and binary releases of SAMUEL
+      ant release-guanxi-src : Build a source release of all the Guanxi components
 
       To configure releases have a look at howto.txt
     </echo>
