@@ -2,6 +2,8 @@ Guanxi::WAYF
 
 This document describes how to get hold of the Guanxi WAYF, in binary form or build it from source and configure it.
 
+Last updated for WAYF V-1_2_5_Rabbie.
+
 Contents
   o What is the WAYF?
   o Getting a binary distribution

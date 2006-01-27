@@ -2,6 +2,8 @@ Guanxi::IdP
 
 This document describes how to get hold of the Guanxi Identity Provider (IdP), in binary form or build it from source and configure it.
 
+Last updated for IdP V-1_2_5_Rabbie.
+
 Contents
   o What is the IdP?
   o Getting a binary distribution
