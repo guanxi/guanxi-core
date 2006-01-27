@@ -1,6 +1,7 @@
 Guanxi::IdP
 
-This document describes how to get hold of the Guanxi Identity Provider (IdP), in binary form or build it from source and configure it.
+This document describes how to get hold of the Guanxi Identity Provider (IdP), in binary form or build it
+from source and configure it.
 
 Last updated for IdP v1.2.6
 
@@ -18,17 +19,24 @@ Contents
   o   Configuring Attribute Release Policies (ARPs)
   o   Configuring Attribute Maps
   o Logging
+  o Testing your IdP with the gxSkye Service Provider
   o More information
   
 What is the IdP?
 --------------------------
-The IdP is your Identity Provider. When you try to access a resource at another site that is protected by a Service Provider, it's the IdP's job to get you authenticated, to provde that you are indeed a member of your institution and then to release attributes about you to the Service Provider. Based upon these attributes, the Service Provider can grant or deny you access to the resource. Your privacy can be preserved by use of the IdP's Attribute Release Policy (ARP) which controls which attributes are released to which Service Providers, or if at all.
+The IdP is your Identity Provider. When you try to access a resource at another site that is protected by
+a Service Provider, it's the IdP's job to get you authenticated, to provde that you are indeed a member of
+your institution and then to release attributes about you to the Service Provider. Based upon these attributes,
+the Service Provider can grant or deny you access to the resource. Your privacy can be preserved by use of the
+IdP's Attribute Release Policy (ARP) which controls which attributes are released to which Service Providers,
+or if at all.
 
 Getting a binary distribution
 ------------------------------------
 You can get a binary distribution, i.e. you don't have to build from source, from the Guanxi sourceforge site:
 http://sourceforge.net/projects/guanxi
-Click on the "Download Guanxi" button and then click on "guanxi" Package under Latest File Releases. You'll now see a list of the Guanxi components available for download.
+Click on the "Download Guanxi" button and then click on "guanxi" Package under Latest File Releases.
+You'll now see a list of the Guanxi components available for download.
 Click on the guanxi-idp-bin-xxx.tar.gz file, where xxx will be the latest version number of the IdP binary release.
 Choose your mirror and the Guanxi IdP will be downloaded to your computer.
 Uncompress the file and jump over the next section, to the installation notes.
@@ -202,16 +210,36 @@ with them. There's no need to change anything.
 The <creds> element is a block of security credential information for the IdP when communicating with a particular SP.
 It has the following elements:
 
-<keystore-type> = The keystore type to use to store the private signing key. Must be jks.
-<keystore-file> = The fully qualified path and filename of the keystore file.
-<keystore-password> = The password to open the keystore.
-<private-key-alias> = The name of the private signing key's alias in the keystore.
-<private-key-password> = The password to access the private signing key in the keystore.
-<certificate-alias> = The name of the X509 Certificate's alias in the keystore. This contains the IdP's public certificate and it's this that's in WEB-INF/keystore/guanxi_idp_cert.txt. SPs must have a copy of this certificate.
-<key-type> = The type of the private signing key, either dsa or rsa.
+<keystore-type>
+The keystore type to use to store the private signing key. Must be jks.
+
+<keystore-file>
+The fully qualified path and filename of the keystore file.
+
+<keystore-password>
+The password to open the keystore.
+
+<private-key-alias>
+The name of the private signing key's alias in the keystore.
+
+<private-key-password>
+The password to access the private signing key in the keystore.
+<certificate-alias>
+The name of the X509 Certificate's alias in the keystore. This contains the IdP's public certificate
+and it's this that's in WEB-INF/keystore/guanxi_idp_cert.txt. SPs must have a copy of this certificate.
+
+<key-type>
+The type of the private signing key, either dsa or rsa.
 
 Using a combination of <identity> and <creds> you can support a wide range of Service Providers using
 the <service-provider> element.
+
+So what do you need to do, as most of the configuration has been generated for you? Well, all you need to do is find
+out the the providerId of each Service Provider you want to communicate with and create a <service-provider> element
+for each one. As an example, the gxSkye test federation as a Service Provider with the providerId "666". To allow
+your IdP to communicate with this SP, you would add the following line to idp.xml:
+
+<service-provider creds="genericCreds" identity="genericIdentity" name="666"/>
 
 Now that the core IdP is configured, you must continue to the backend configuration for authentication.
 
@@ -232,8 +260,8 @@ for the IdP to load it and use it.
 
 To configure the LDAPAuthenticator, you must modify the file:
 
-WEB-INF/guanxi_idp/config/authenticators/LDAPAuthenticator.xml. The file is fully commented so we'll delegate configuration
-information to the file itself as it's self explanatory.
+WEB-INF/guanxi_idp/config/authenticators/LDAPAuthenticator.xml.
+The file is fully commented so we'll delegate configuration information to the file itself as it's self explanatory.
 
 Configuring the LDAPAttributor
 ------------------------------------------
@@ -374,11 +402,20 @@ as the map syntax is the same for all Attributors.
 
 For each attribute you want to map, just provide a <map> element with the following attributes:
 
-info = An informational name for the map, to remind you what it does.
-attrName = The name of the attribute to be mapped. Can be the attribute name or a regex or just *.
-attrValue = The value of the attribute to be mapped. Can be a specific attribute value or a regex or just *.
-mappedName = The name of the new attribute.
-mappedValue = The value for the new attribute.
+info
+An informational name for the map, to remind you what it does.
+
+attrName
+The name of the attribute to be mapped. Can be the attribute name or a regex or just *.
+
+attrValue
+The value of the attribute to be mapped. Can be a specific attribute value or a regex or just *.
+
+mappedName
+The name of the new attribute.
+
+mappedValue
+The value for the new attribute.
 
 In the above example, an Attributor, when it comes across a user's "dn" attribute, will use the map
 to check if they are, in effect, a member of staff using the regex which will match things like:
@@ -440,9 +477,61 @@ With the following combination of <context-param> and <servlet> logging settings
 
 the IdP's SSP component will log to WEB-INF/logs/guanxi-sso.log
 
+Testing your IdP with the gxSkye Service Provider
+-------------------------------------------------
+The gxSkye federation exists to allow Guanxi adopters to test their components. To test your new IdP with a Guanxi
+Service Provider, you must first add a new <service-provider> element to your WEB-INF/guanxi_idp/config/idp.xml. We'll
+assume you're still using the example certificate, identity and credential information. So add this line to your
+idp.xml:
+
+<service-provider name="gxSkyeGuard" identity="genericIdentity" creds="genericCreds"/>
+
+The Guanxi team will then require the following information:
+
+o Your IdP's certificate. Just send us your WEB-INF/guanxi_idp/config/keystore/guanxi_idp_cert.txt
+o Your IdP's ID. This is the <issuer> from your <identity> block of information in WEB-INF/guanxi_idp/config/idp.xml.
+  The one that's referenced from the line you just added. This would be the block:
+
+  <identity name="genericIdentity">
+    <issuer>GUANXI--1194634859</issuer>
+    <name-qualifier>GUANXI--1194634859</name-qualifier>
+  </identity>
+
+  Remember that the actual values will differ from your's. Just send us what's in the <issuer> element
+o The URL of your IdP's authentication servlet. This will be http://your.idp.url/SSO
+o The URL of your IdP's Attribute Authority. This will be http://your.idp.url/AA
+o A name by which you would like your IdP to be known. This name will be displayed in the gxSkye WAYF.
+
+You must now send this information to the following address:
+
+gxskye@smo.uhi.ac.uk
+
+To complete the test environment, you must now configure your ARP, adding the gxSkye Service Provider:
+
+<provider name="gxSkyeGuard">
+  <allow>global</allow>
+</provider>
+
+The above rule will release all your attributes to the gxSkye Service Provider so you may want to create a new
+bag of restricted attributes and <allow> that instead.
+
+When you've made the changes to the IdP's configuration and the ARP file, restart your servlet container or reload the
+IdP web application. You're now ready to see what your IdP is releasing to the outside world.
+
+To check what your IdP looks like to Service Providers, point your browser at the following url:
+
+http://guanxi.uhi.ac.uk/gxskye/idpcheck.jsp
+
+This will display the gxSkye WAYF. You must then choose your IdP from the list, using the name you specified. You
+will then be redirected to your IdP, where you must authenticate. You will then be returned to the requested resource.
+
+The resource in question will just display all the information coming from your IdP, including which attributes it
+as released to the gxSkye Service Provider.
+
 More information
 -----------------------
-If you have any comments, ideas or suggestions, drop us a note on the Guanxi mailing list, which you can join at the Guanxi sourceforge site:
+If you have any comments, ideas or suggestions, drop us a note on the Guanxi mailing list,
+which you can join at the Guanxi sourceforge site:
 
 http://sourceforge.net/projects/guanxi.
 
