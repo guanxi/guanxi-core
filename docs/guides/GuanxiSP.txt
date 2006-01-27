@@ -57,26 +57,27 @@ Uncompress the file and jump over the next section, to the installation notes.
 
 Building from source
 ---------------------------
-You can get the Guanxi source distribution from the Guanxi sourceforge site:
-http://sourceforge.net/projects/guanxi
-Click on the "Download Guanxi" button and then click on "guanxi" Package under Latest File Releases. You'll now see a list of the Guanxi components available for download.
-Click on the guanxi-src-xxx.tar.gz file, where xxx will be the latest version number of the Guanxi source release. As the SP depends on other Guanxi components, there's no separate SP source release. Instead, download the Guanxi system source and the build file will build the SP for you.
-Choose your mirror and the Guanxi source will be downloaded to your computer.
-Uncompress the file to get the following file structure:
+You can get the Guanxi source distribution from the Guanxi sourceforge CVS server. In a command shell, you should
+enter the following commands:
+
+cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/guanxi login
+cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/guanxi co -P guanxi
+
+when prompted for a password, just hit the enter key. You don't need one for anonymous access.
+
+This will create a directory named guanxi, which has the following structure:
 
 guanxi
--- Common         : Guanxi::Common - contains functionality shared by the Guanxi components
--- IdP                  : Guanxi::IdP - The Guanxi Identity Provider (IdP)
--- SP                   : Guanxi::SP - The Guanxi Service Provider (SP)
--- WAYF             : Guanxi::WAYF - The Guanxi WAYF
--- build.xml         : The Guanxi ant build file
--- gx_lib              : Libraries required by the Guanxi components
--- messages       : Localised text messages for the Guanxi components
--- readme.txt       : The Guanxi readme
--- samuel            : The Guanxi SAMUEL SAML toolkit
--- xsd                  : The Guanxi XML Schema files
+-- CVS    : CVS information. This is only for versioning and is not used by the guanxi source code.
+-- Common : The Guanxi Common module. This provides functionality that the other modules make use of.
+-- Core   : The Guanxi Core module. This contains localised strings and XML schema files.
+-- IdP    : The Guanxi Identity Provider.
+-- SP     : The Guanxi Service Provider.
+-- WAYF   : The Guanxi WAYF.
+-- gx_lib : This directory contains all the JAR files required by the Guanxi modules. It's included as a convenience.
+-- samuel : The Guanxi SAML toolkit.
 
-You should now go into the guanxi directory and type the following command:
+You should now go into the Core directory and type the following command:
 
 ant sp-engine
 
