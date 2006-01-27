@@ -76,7 +76,6 @@ Restart your servlet container and point your browser to:
 http://localhost/idp
 
 replacing "localhost" with your server's host name if appropriate.
-You should see the Guanxi IdP page with a description of the IdP.
 There's no root index file as the IdP can be embedded in a web application to turn that application into a
 Shibboleth compatibie Identity Provider. You should go into the guanxi IdP's directory to see the IdP information:
 
@@ -125,7 +124,7 @@ You should see the "Setup complete" page.
 
 You should now have the following files:
 
-WEB-INF/keystore
+WEB-INF/guanxi_idp/keystore
 -- guanxi_idp.jks
 -- guanxi_idp_cert.txt
 
@@ -135,7 +134,7 @@ Internet2 Shibboleth SP.
 
 The following file will also have been modified to use the test certificate and keystore:
 
-WEB-INF/config/idp.xml
+WEB-INF/guanxi_idp/config/idp.xml
 
 You're now ready to configure the core IdP.
 
@@ -143,7 +142,7 @@ Configuring the core IdP
 ---------------------------------
 The core IdP is controlled via the file:
 
-WEB-INF/config/idp.xml
+WEB-INF/guanxi_idp/config/idp.xml
 
 which tells the IdP which SPs it can communicate with. It also tells the IdP which keys to use when signing
 attribute assertions for SPs. It also tells the IdP which identity to use when communicating with an SP.
@@ -210,7 +209,7 @@ Configuring the LDAPAuthenticator
 -----------------------------------------------
 The IdP comes with a default LDAPAuthenticator which is already registered with the IdP via the file:
 
-WEB-INF/config/authenticators/authenticators.xml
+WEB-INF/guanxi_idp/config/authenticators/authenticators.xml
 
 <authenticators xmlns="urn:guanxi:idp">
   <authenticator type="org.guanxi.idp.authenticators.LDAPAuthenticator" />
@@ -223,14 +222,14 @@ for the IdP to load it and use it.
 
 To configure the LDAPAuthenticator, you must modify the file:
 
-WEB-INF/config/authenticators/LDAPAuthenticator.xml. The file is fully commented so we'll delegate configuration
+WEB-INF/guanxi_idp/config/authenticators/LDAPAuthenticator.xml. The file is fully commented so we'll delegate configuration
 information to the file itself as it's self explanatory.
 
 Configuring the LDAPAttributor
 ------------------------------------------
 The IdP comes with a default LDAPAttributor which is already registered with the IdP via the file:
 
-WEB-INF/config/attributors/attributors.xml
+WEB-INF/guanxi_idp/config/attributors/attributors.xml
 
 <attributors xmlns="urn:guanxi:idp">
   <attributor type="org.guanxi.idp.attributors.LDAPAttributor" />
@@ -243,7 +242,7 @@ the IdP to load it and use it.
 
 To configure the LDAPAttributor, you must modify the file:
 
-WEB-INF/config/attributors/LDAPAttributor.xml. The file is fully commented so we'll delegate configuration
+WEB-INF/guanxi_idp/config/attributors/LDAPAttributor.xml. The file is fully commented so we'll delegate configuration
 information to the file itself as it's self explanatory.
 
 Configuring Attribute Release Policies (ARPs)
@@ -254,7 +253,7 @@ for all Attributors.
 
 The LDAPAttributor's ARP is in the file:
 
-WEB-INF/config/attributors/LDAPAttributorARP.xml
+WEB-INF/guanxi_idp/config/attributors/LDAPAttributorARP.xml
 
 <arp xmlns="urn:guanxi:idp">
   <bag name="global">
