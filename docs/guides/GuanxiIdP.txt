@@ -488,19 +488,30 @@ idp.xml:
 
 The Guanxi team will then require the following information:
 
-o Your IdP's certificate. Just send us your WEB-INF/guanxi_idp/config/keystore/guanxi_idp_cert.txt
-o Your IdP's ID. This is the <issuer> from your <identity> block of information in WEB-INF/guanxi_idp/config/idp.xml.
-  The one that's referenced from the line you just added. This would be the block:
+Information about your IdP:
+  o Your IdP's certificate. Just send us your WEB-INF/guanxi_idp/config/keystore/guanxi_idp_cert.txt
+  o Your IdP's ID. This is the <issuer> from your <identity> block of information in WEB-INF/guanxi_idp/config/idp.xml.
+    The one that's referenced from the line you just added. This would be the block:
 
-  <identity name="genericIdentity">
-    <issuer>GUANXI--1194634859</issuer>
-    <name-qualifier>GUANXI--1194634859</name-qualifier>
-  </identity>
+    <identity name="genericIdentity">
+      <issuer>GUANXI--1194634859</issuer>
+      <name-qualifier>GUANXI--1194634859</name-qualifier>
+    </identity>
 
-  Remember that the actual values will differ from your's. Just send us what's in the <issuer> element
-o The URL of your IdP's authentication servlet. This will be http://your.idp.url/SSO
-o The URL of your IdP's Attribute Authority. This will be http://your.idp.url/AA
-o A name by which you would like your IdP to be known. This name will be displayed in the gxSkye WAYF.
+    Remember that the actual values will differ from your's. Just send us what's in the <issuer> element
+  o A name by which you would like your IdP to be known. This name will be displayed in the gxSkye WAYF.
+
+Information about your institution or organisation:
+  o The URL of your IdP's authentication servlet. This will be http://your.idp.url/SSO
+  o The URL of your IdP's Attribute Authority. This will be http://your.idp.url/AA
+  o The formal name of your institution or organisation.
+  o The display name of your institution or organisation. This may be different from the formal name.
+  o The URL of your institution or organisation.
+
+Information on a contact person to deal with any issues:
+  o Full name of the technical contact for the IdP.
+  o Email address of the technical contact for the IdP.
+  o Telephone number of the technical contact for the IdP if applicable.
 
 You must now send this information to the following address:
 
@@ -520,7 +531,7 @@ IdP web application. You're now ready to see what your IdP is releasing to the o
 
 To check what your IdP looks like to Service Providers, point your browser at the following url:
 
-http://guanxi.uhi.ac.uk/gxskye/gxskye/idpcheck.jsp
+http://guanxi.uhi.ac.uk/gxskye/idpcheck.jsp
 
 This will display the gxSkye WAYF. You must then choose your IdP from the list, using the name you specified. You
 will then be redirected to your IdP, where you must authenticate. You will then be returned to the requested resource.
