@@ -416,25 +416,25 @@
   <target name="getCommonModules" description="Checks out the modules required by the main Guanxi components">
     <!-- Get Guanxi::Core from CVS -->
     <cvs cvsRoot="${cvs.root}"
-         package="Core"
+         package="-P Core"
          tag="${release.core.cvs.tag}"
          dest="${tmp.dir}" />
 
     <!-- Get Guanxi::Common from CVS -->
     <cvs cvsRoot="${cvs.root}"
-         package="Common"
+         package="-P Common"
          tag="${release.common.cvs.tag}"
          dest="${tmp.dir}" />
 
     <!-- Get SAMUEL from CVS -->
     <cvs cvsRoot="${cvs.root}"
-         package="samuel"
+         package="-P samuel"
          tag="${release.samuel.cvs.tag}"
          dest="${tmp.dir}" />
 
     <!-- Get gx_lib from CVS -->
     <cvs cvsRoot="${cvs.root}"
-         package="gx_lib"
+         package="-P gx_lib"
          tag="${release.gx_lib.cvs.tag}"
          dest="${tmp.dir}" />
   </target>
@@ -442,7 +442,7 @@
   <target name="getIdP" description="Checks out the IdP from CVS">
     <!-- Get Guanxi::IdP from CVS -->
     <cvs cvsRoot="${cvs.root}"
-         package="IdP"
+         package="-P IdP"
          tag="${release.idp.cvs.tag}"
          dest="${tmp.dir}" />
   </target>
@@ -450,14 +450,14 @@
   <target name="getSP" description="Checks out the SP from CVS">
     <!-- Get Guanxi::SP from CVS -->
     <cvs cvsRoot="${cvs.root}"
-         package="SP"
+         package="-P SP"
          tag="${release.sp.cvs.tag}"
          dest="${tmp.dir}" />
   </target>
 
   <target name="getWAYF" description="Checks out the WAYF from CVS">
     <cvs cvsRoot="${cvs.root}"
-         package="WAYF"
+         package="-P WAYF"
          tag="${release.wayf.cvs.tag}"
          dest="${tmp.dir}" />
   </target>
