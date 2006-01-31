@@ -2,12 +2,6 @@
   <!-- This file contains static locations for the Guanxi modules -->
   <property file="build.properties" />
 
-  <!-- These files are module release specific -->
-  <property file="${release.properties.dir}/sp.release.properties" />
-  <property file="${release.properties.dir}/idp.release.properties" />
-  <property file="${release.properties.dir}/wayf.release.properties" />
-  <property file="${release.properties.dir}/samuel.release.properties" />
-
   <!-- Sourceforge anonymous user checkout details -->
   <property name="cvs.anon" value=":pserver:anonymous@cvs.sourceforge.net:/cvsroot/guanxi" />
   <property name="cvs.anon.password" value="" />
@@ -47,6 +41,7 @@
   </target>
 
   <target name="release-idp" description="Builds a release of the Guanxi IdP">
+    <property file="${release.properties.dir}/idp.release.properties" />
 
     <!-- Where the IdP release files will be -->
     <property name="idp.release.dir" value="guanxi-idp-release-${release.version}" />
@@ -124,6 +119,7 @@
   </target>
 
   <target name="release-sp" description="Builds a release of the Guanxi SP">
+    <property file="${release.properties.dir}/sp.release.properties" />
 
     <!-- Where the SP release files will be -->
     <property name="sp.release.dir" value="guanxi-sp-bin-${release.version}" />
@@ -217,6 +213,7 @@
   </target>
 
   <target name="release-wayf" description="Builds a release of the Guanxi WAYF">
+    <property file="${release.properties.dir}/wayf.release.properties" />
 
     <!-- Where the WAYF release files will be -->
     <property name="wayf.release.dir" value="guanxi-wayf-bin-${release.version}" />
@@ -294,6 +291,7 @@
   </target>
 
   <target name="release-samuel" description="Builds a release of SAMUEL">
+    <property file="${release.properties.dir}/samuel.release.properties" />
 
     <!-- Where the SAMUEL release files will be -->
     <property name="samuel.release.dir" value="samuel-bin-${release.version}" />
