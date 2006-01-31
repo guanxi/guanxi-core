@@ -2,17 +2,11 @@
   <!-- This file contains static locations for the Guanxi modules -->
   <property file="build.properties" />
 
-  <!-- Sourceforge anonymous user checkout details -->
-  <property name="cvs.anon" value=":pserver:anonymous@cvs.sourceforge.net:/cvsroot/guanxi" />
-  <property name="cvs.anon.password" value="" />
+  <!-- CVS properties files -->
+  <property file="${release.properties.dir}/cvs.properties" />
 
-  <!-- Sourceforge CVS user checkout details -->
-  <property name="cvs.user" value=":ext:${release.user}@cvs.sourceforge.net:/cvsroot/guanxi" />
-  <property name="cvs.user.password" value="${release.user.password}" />
-
-  <!-- Which CVS user to use for checking out modules -->
-  <property name="cvs.root" value="${cvs.user}" />
-  <property name="cvs.root.password" value="${cvs.user.password}" />
+  <!-- Which CVS user and root to use for checking out modules -->
+  <property name="cvs.root" value=":ext:${cvs.user}@cvs.sourceforge.net:/cvsroot/guanxi" />
 
   <!-- Where the modules are checked out to in the checkout directory -->
   <property name="core.dir" value="${tmp.dir}/${tmp.guanxi-core.home}" />
