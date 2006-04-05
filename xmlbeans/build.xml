@@ -1,0 +1,34 @@
+<project name="GuanxiBeans" default="help">
+  <property file="build.properties" />
+
+  <taskdef name="xmlbean"
+           classname="org.apache.xmlbeans.impl.tool.XMLBean"
+           classpath="${xmlbeans.home}/lib/xbean.jar:${xmlbeans.home}/lib/jsr173_1.0_api.jar" />
+
+  <!-- CLASSPATH -->
+  <path id="classpath">
+    <pathelement path="${xmlbeans.home}/lib/xbean.jar" />
+    <pathelement path="${xmlbeans.home}/lib/jsr173_1.0_api.jar" />
+  </path>
+
+  <target name="help" description="Displays usage of this build file">
+    <echo>
+      ant beans : Builds the Guanxi schema beans
+    </echo>
+  </target>
+
+  <target name="beans">
+    <!--
+    <delete dir="${src.gen.dir}" />
+    <mkdir dir="${src.gen.dir}" />
+    -->
+    <delete file="${lib.dir}/${beans.jar}" />
+
+    <xmlbean schema="${xsd.home}"
+             download="true"
+             noupa="true"
+             destfile="${lib.dir}/${beans.jar}">
+      <classpath refid="classpath"/>
+    </xmlbean>
+  </target>
+</project>
