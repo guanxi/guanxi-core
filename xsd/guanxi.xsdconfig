@@ -1,0 +1,95 @@
+<xb:config xmlns:xb="http://xml.apache.org/xmlbeans/2004/02/xbean/config"
+    		   xmlns:gxidp="urn:guanxi:idp"
+    		   xmlns:gxsp="urn:guanxi:sp"
+    		   xmlns:gxmeta="urn:guanxi:metadata"
+           xmlns:samlp1="urn:oasis:names:tc:SAML:1.0:protocol"
+           xmlns:saml1="urn:oasis:names:tc:SAML:1.0:assertion"
+           xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+           xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
+           xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
+           xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+           xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"
+           xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+
+  <!-- Namespaces to package mappings -->
+  <xb:namespace uri="urn:guanxi:idp">
+    <xb:package>org.guanxi.xal.idp</xb:package>
+  </xb:namespace>
+
+  <xb:namespace uri="urn:guanxi:sp">
+    <xb:package>org.guanxi.xal.sp</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="urn:guanxi:metadata">
+    <xb:package>org.guanxi.xal.saml2.metadata</xb:package>
+  </xb:namespace>
+    
+  <xb:namespace uri="urn:oasis:names:tc:SAML:1.0:protocol">
+    <xb:package>org.guanxi.xal.saml_1_0.protocol</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="urn:oasis:names:tc:SAML:1.0:assertion">
+    <xb:package>org.guanxi.xal.saml_1_0.assertion</xb:package>
+  </xb:namespace>
+    
+  <xb:namespace uri="urn:oasis:names:tc:SAML:2.0:protocol">
+    <xb:package>org.guanxi.xal.saml_2_0.protocol</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="urn:oasis:names:tc:SAML:2.0:assertion">
+    <xb:package>org.guanxi.xal.saml_2_0.assertion</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="urn:oasis:names:tc:SAML:2.0:metadata">
+    <xb:package>org.guanxi.xal.saml_2_0.metadata</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="http://www.w3.org/2000/09/xmldsig#">
+    <xb:package>org.guanxi.xal.w3.xmldsig</xb:package>
+  </xb:namespace>
+    
+  <xb:namespace uri="http://www.w3.org/2001/XMLSchema">
+    <xb:package>org.guanxi.xal.w3.schema</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="http://www.w3.org/2001/04/xmlenc#">
+    <xb:package>org.guanxi.xal.w3.xmlenc</xb:package>
+  </xb:namespace>
+  
+  <xb:namespace uri="http://schemas.xmlsoap.org/soap/envelope/">
+    <xb:package>org.guanxi.xal.soap</xb:package>
+  </xb:namespace>
+    
+  <!-- Mappings from types defined in guanxi-idp.xsd to Java classes -->
+  <xb:qname name="gxidp:credsType" javaname="Creds"/>
+  <xb:qname name="gxidp:identityType" javaname="Identity"/>
+  <xb:qname name="gxidp:serviceProviderType" javaname="ServiceProvider"/>
+  <xb:qname name="gxidp:attributorType" javaname="Attributor"/>
+  <xb:qname name="gxidp:serverType" javaname="Server"/>
+  <xb:qname name="gxidp:wayfType" javaname="WAYF"/>
+  <xb:qname name="gxidp:attributeType" javaname="Attribute"/>
+  <xb:qname name="gxidp:bagType" javaname="Bag"/>
+  <xb:qname name="gxidp:providerType" javaname="Provider"/>
+  <xb:qname name="gxidp:mapType" javaname="Map"/>
+  <xb:qname name="gxidp:authCookieHandlerType" javaname="AuthCookieHandler"/>
+  <xb:qname name="gxidp:cookieType" javaname="Cookie"/>
+  <xb:qname name="gxidp:mapType" javaname="Map"/>
+  <xb:qname name="gxidp:mapType" javaname="Map"/>
+  <xb:qname name="gxidp:mapType" javaname="Map"/>
+  <xb:qname name="gxidp:mapType" javaname="Map"/>
+  
+  <!-- Mappings from types defined in guanxi-sp.xsd to Java classes -->
+  <!-- <xb:qname name="gxsp:Guard" javaname="Guard"/> -->
+  <xb:qname name="gxsp:guardInfoType" javaname="GuardInfo"/>
+  <xb:qname name="gxsp:cookieType" javaname="Cookie"/>
+  <xb:qname name="gxsp:cookieAgeType" javaname="CookieAge"/>
+  <xb:qname name="gxsp:cookieAgeUnitsType" javaname="CookieAgeUnits"/>
+  <xb:qname name="gxsp:engineInfoType" javaname="EngineInfo"/>
+  <!-- <xb:qname name="gxsp:Engine" javaname="Engine"/> -->
+  
+  <!-- Mappings from types defined in guanxi-saml-ext.xsd to Java classes -->
+  <xb:qname name="gxmeta:guardRoleDescriptorExtensionsType" javaname="GuardRoleDescriptorExtensions"/>
+  <xb:qname name="gxmeta:attributeServiceExtensionsType" javaname="AttributeServiceExtensionsType"/>
+  <xb:qname name="gxmeta:GuanxiGuardDescriptorType" javaname="GuanxiGuardDescriptor"/>
+
+</xb:config>
