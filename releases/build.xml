@@ -116,7 +116,7 @@
     <property file="${release.properties.dir}/sp.release.properties" />
 
     <!-- Where the SP release files will be -->
-    <property name="sp.release.dir" value="guanxi-sp-bin-${release.version}" />
+    <property name="sp.release.dir" value="guanxi-sp-release-${release.version}" />
 
     <echo>
       Building Guanxi SP ${release.version} on ${release.date}
@@ -210,7 +210,7 @@
     <property file="${release.properties.dir}/wayf.release.properties" />
 
     <!-- Where the WAYF release files will be -->
-    <property name="wayf.release.dir" value="guanxi-wayf-bin-${release.version}" />
+    <property name="wayf.release.dir" value="guanxi-wayf-release-${release.version}" />
 
     <echo>
       Building Guanxi WAYF ${release.version} on ${release.date}
@@ -288,7 +288,7 @@
     <property file="${release.properties.dir}/samuel.release.properties" />
 
     <!-- Where the SAMUEL release files will be -->
-    <property name="samuel.release.dir" value="samuel-bin-${release.version}" />
+    <property name="samuel.release.dir" value="samuel-release-${release.version}" />
 
     <echo>
       Building SAMUEL ${release.version} on ${release.date}
