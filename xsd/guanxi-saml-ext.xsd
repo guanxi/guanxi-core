@@ -25,6 +25,8 @@
       <element name="VerifierURL" type="string"/>
       <element name="AttributeConsumerServiceURL" type="string"/>
       <element name="PodderURL" type="string"/>
+      <element name="Keystore" type="string"/>
+      <element name="KeystorePassword" type="string"/>
     </sequence>
   </complexType>
   <element name="GuanxiGuardService" type="gxmeta:guardRoleDescriptorExtensionsType" />
