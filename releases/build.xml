@@ -6,7 +6,7 @@
   <property file="${release.properties.dir}/cvs.properties" />
 
   <!-- Which CVS user and root to use for checking out modules -->
-  <property name="cvs.root" value=":ext:${cvs.user}@cvs.sourceforge.net:/cvsroot/guanxi" />
+  <property name="cvs.root" value=":ext:${cvs.user}@guanxi.cvs.sourceforge.net:/cvsroot/guanxi" />
 
   <!-- Where the modules are checked out to in the checkout directory -->
   <property name="core.dir" value="${tmp.dir}/${tmp.guanxi-core.home}" />
