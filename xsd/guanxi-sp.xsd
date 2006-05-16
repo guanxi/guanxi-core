@@ -66,6 +66,8 @@
       <sequence>
         <element name="WAYF" type="string" />
         <element name="NameQualifier" type="string" />
+        <element name="TrustStore" type="string" />
+        <element name="TrustStorePassword" type="string" />
       </sequence>
     </complexType>
   </element>
