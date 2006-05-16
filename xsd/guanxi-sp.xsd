@@ -65,6 +65,7 @@
     <complexType>
       <sequence>
         <element name="WAYF" type="string" />
+        <element name="NameQualifier" type="string" />
       </sequence>
     </complexType>
   </element>
