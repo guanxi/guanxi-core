@@ -64,12 +64,27 @@
   <element name="Engine">
     <complexType>
       <sequence>
-        <element name="WAYF" type="string" />
         <element name="NameQualifier" type="string" />
         <element name="TrustStore" type="string" />
         <element name="TrustStorePassword" type="string" />
         <element name="GuardsMetadataDirectory" type="string" />
         <element name="IdPMetadataDirectory" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+
+  <complexType name="guardWAYFLocationType">
+    <simpleContent>
+      <extension base="string">
+        <attribute name="id" type="string"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <element name="WAYFLocations">
+    <complexType>
+      <sequence>
+        <element name="Guard" type="gx:guardWAYFLocationType" minOccurs="0" maxOccurs="unbounded" />
       </sequence>
     </complexType>
   </element>
