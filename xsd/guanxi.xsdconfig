@@ -84,7 +84,7 @@
   <xb:qname name="gxsp:cookieAgeType" javaname="CookieAge"/>
   <xb:qname name="gxsp:cookieAgeUnitsType" javaname="CookieAgeUnits"/>
   <xb:qname name="gxsp:engineInfoType" javaname="EngineInfo"/>
-  <xb:qname name="gxsp:guardWAYFLocationType" javaname="GuardWAYFLocation"/>
+  <xb:qname name="gxsp:wayfType" javaname="WAYF"/>
   
   <!-- Mappings from types defined in guanxi-saml-ext.xsd to Java classes -->
   <xb:qname name="gxmeta:guardRoleDescriptorExtensionsType" javaname="GuardRoleDescriptorExtensions"/>
