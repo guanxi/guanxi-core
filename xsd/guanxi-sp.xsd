@@ -73,10 +73,11 @@
     </complexType>
   </element>
 
-  <complexType name="guardWAYFLocationType">
+  <complexType name="wayfType">
     <simpleContent>
       <extension base="string">
-        <attribute name="id" type="string"/>
+        <attribute name="default" type="string" use="optional"/>
+        <attribute name="guardID" type="string" use="optional"/>
       </extension>
     </simpleContent>
   </complexType>
@@ -84,7 +85,7 @@
   <element name="WAYFLocations">
     <complexType>
       <sequence>
-        <element name="Guard" type="gx:guardWAYFLocationType" minOccurs="1" maxOccurs="unbounded" />
+        <element name="WAYF" type="gx:wayfType" minOccurs="1" maxOccurs="unbounded" />
       </sequence>
     </complexType>
   </element>
