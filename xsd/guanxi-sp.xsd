@@ -84,7 +84,7 @@
   <element name="WAYFLocations">
     <complexType>
       <sequence>
-        <element name="Guard" type="gx:guardWAYFLocationType" minOccurs="0" maxOccurs="unbounded" />
+        <element name="Guard" type="gx:guardWAYFLocationType" minOccurs="1" maxOccurs="unbounded" />
       </sequence>
     </complexType>
   </element>
