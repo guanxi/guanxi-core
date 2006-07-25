@@ -57,6 +57,11 @@
         <element name="GuardInfo" type="gx:guardInfoType" />
         <element name="Cookie" type="gx:cookieType" />
         <element name="EngineInfo" type="gx:engineInfoType" />
+        <element name="TrustStore" type="string" />
+        <element name="TrustStorePassword" type="string" />
+        <element name="Keystore" type="string" />
+        <element name="KeystorePassword" type="string" />
+        <element name="CertificateAlias" type="string" />
       </sequence>
     </complexType>
   </element>
