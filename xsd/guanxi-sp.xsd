@@ -44,9 +44,8 @@
 
   <complexType name="engineInfoType">
     <sequence>
-      <element name="WSDL" type="string"/>
       <element name="AuthConsumerURL" type="string"/>
-      <element name="WAYFMethod" type="string"/>
+      <element name="WAYFLocationService" type="string"/>
       <element name="Timeout" type="string"/>
     </sequence>
   </complexType>
