@@ -72,6 +72,7 @@
         <element name="Keystore" type="string" />
         <element name="KeystorePassword" type="string" />
         <element name="CertificateAlias" type="string" />
+        <element name="KeyType" type="string" />
         <element name="TrustStore" type="string" />
         <element name="TrustStorePassword" type="string" />
         <element name="GuardsMetadataDirectory" type="string" />
