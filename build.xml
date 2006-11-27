@@ -1,4 +1,4 @@
-<project name="Guanxi" default="all">
+<project name="Guanxi" default="help">
   <property file="build.properties" />
 
   <target name="help" description="Describes the build options">
@@ -9,7 +9,8 @@
       you want, without having to bother about the rest.
 
       The options available are:
-        ant             : Builds all the Guanxi components
+        ant clean-all   : Cleans all the Guanxi modules
+        ant build-all   : Builds all the Guanxi modules
         ant idp         : Builds the Guanxi Identity Provider (IdP). The IdP can be found in IdP/dist/webapp
         ant wayf        : Builds the Guanxi WAYF. The WAYF can be found in WAYF/dist/webapp
         ant sp-guard    : Builds the Guanxi Service Provider (SP) Guard. The SP can be found in SP/dist/webapp/guard
@@ -20,8 +21,17 @@
     </echo>
   </target>
 
+  <!-- Cleans all the Guanxi modules -->
+  <target name="clean-all" description="Cleans all the Guanxi modules">
+    <ant antfile="build.xml" dir="../Common" target="clean"/>
+    <ant antfile="build.xml" dir="../IdP" target="clean"/>
+    <ant antfile="build.xml" dir="../samuel" target="clean"/>
+    <ant antfile="build.xml" dir="../SP" target="clean"/>
+    <ant antfile="build.xml" dir="../WAYF" target="clean"/>
+  </target>
+
   <!-- Builds the entire Guanxi suite of components -->
-  <target name="all" description="Builds all the Guanxi components">
+  <target name="build-all" description="Builds all the Guanxi components">
     <ant antfile="build.xml" dir="${samuel.home}" target="all"/>
     <ant antfile="build.xml" dir="${guanxi-common.home}" target="all"/>
     <ant antfile="build.xml" dir="${guanxi-idp.home}" target="all"/>
