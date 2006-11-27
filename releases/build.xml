@@ -403,12 +403,6 @@
     </tar>
     <gzip zipfile="${gx-src.release.dir}/guanxi-src-${release.version}.tar.gz" src="${gx-src.release.dir}/guanxi-src-${release.version}.tar" />
 
-    <!-- Copy the config files to build this release again -->
-    <antcall target="copyBuildFiles">
-      <param name="module.release.dir" value="${idp.release.dir}" />
-      <param name="properties.file" value="${release.properties.dir}/gx-src.release.properties" />
-    </antcall>
-
     <!-- Tidy up -->
     <delete file="${gx-src.release.dir}/guanxi-src-${release.version}.tar" />
     <delete dir="${gx-src.release.dir}/guanxi-src-${release.version}" />
@@ -461,11 +455,5 @@
          package="-P WAYF"
          tag="${release.wayf.cvs.tag}"
          dest="${tmp.dir}" />
-  </target>
-
-  <target name="copyBuildFiles" description="Copies the files used to create the release">
-    <copy file="build.xml" toDir="${module.release.dir}/config" />
-    <copy file="build.properties" toDir="${module.release.dir}/config" />
-    <copy file="${properties.file}" toDir="${module.release.dir}/config/${release.properties.dir}" />
   </target>
 </project>
