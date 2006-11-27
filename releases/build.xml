@@ -360,8 +360,9 @@
   </target>
 
   <target name="release-guanxi-src" description="Builds a release of the Guanxi source">
-
-    <!-- Where the IdP release files will be -->
+    <property file="${release.properties.dir}/gx-src.release.properties" />
+    
+    <!-- Where the Guanxi source release files will be -->
     <property name="gx-src.release.dir" value="guanxi-src-release-${release.version}" />
 
     <echo>
