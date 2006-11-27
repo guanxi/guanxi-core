@@ -456,4 +456,10 @@
          tag="${release.wayf.cvs.tag}"
          dest="${tmp.dir}" />
   </target>
+
+  <target name="copyBuildFiles" description="Copies the files used to create the release">
+    <copy file="build.xml" toDir="${module.release.dir}/config" />
+    <copy file="build.properties" toDir="${module.release.dir}/config" />
+    <copy file="${properties.file}" toDir="${module.release.dir}/config/${release.properties.dir}" />
+  </target>
 </project>
