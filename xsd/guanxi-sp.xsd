@@ -78,6 +78,8 @@
         <element name="TrustStorePassword" type="string" />
         <element name="GuardsMetadataDirectory" type="string" />
         <element name="IdPMetadataDirectory" type="string" />
+        <element name="WAYFLocationsFile" type="string" />
+        <element name="GuardTemplateFile" type="string" />
       </sequence>
     </complexType>
   </element>
