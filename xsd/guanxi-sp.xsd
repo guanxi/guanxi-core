@@ -39,6 +39,7 @@
     <sequence>
       <element name="HostName" type="string"/>
       <element name="ID" type="string"/>
+      <element name="AttributePrefix" type="string"/>
     </sequence>
   </complexType>
 
