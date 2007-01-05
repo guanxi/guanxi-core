@@ -60,19 +60,6 @@
     <attribute name="type" type="string"/>
   </complexType>
 
-  <complexType name="serverType">
-    <sequence>
-      <element name="address" type="string"/>
-      <element name="port" type="string"/>
-      <element name="timeout" type="string"/>
-      <element name="privileged-dn" type="string"/>
-      <element name="privileged-dn-password" type="string"/>
-      <element name="search-base-dn" type="string" minOccurs="0"/>
-      <element name="search-scope" type="string" minOccurs="0"/>
-      <element name="search-attribute" type="string" minOccurs="0"/>
-    </sequence>
-  </complexType>
-
   <element name="attributors">
     <complexType>
       <sequence>
@@ -89,13 +76,31 @@
     </complexType>
   </element>
 
-  <element name="ldap-authenticator">
+
+
+  <!-- ******************************************************************** -->
+  <!-- The format of the XML for the LDAP authenticator and attributor -->
+  <complexType name="serverType">
+    <sequence>
+      <element name="address" type="string"/>
+      <element name="port" type="string"/>
+      <element name="timeout" type="string"/>
+      <element name="privileged-dn" type="string"/>
+      <element name="privileged-dn-password" type="string"/>
+      <element name="search-base-dn" type="string" minOccurs="0"/>
+      <element name="search-scope" type="string" minOccurs="0"/>
+      <element name="search-attribute" type="string" minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+  <element name="ldap">
     <complexType>
       <sequence>
         <element name="server" type="gx:serverType" maxOccurs="unbounded" />
       </sequence>
     </complexType>
   </element>
+  <!-- ******************************************************************** -->
 
   <complexType name="wayfType">
     <attribute name="name" type="string"/>
@@ -110,15 +115,8 @@
     </complexType>
   </element>
 
-  <element name="ldap-attributor">
-    <complexType>
-      <sequence>
-        <element name="arp-file" type="string"/>
-        <element name="server" type="gx:serverType" maxOccurs="unbounded" />
-      </sequence>
-    </complexType>
-  </element>
-  
+  <!-- ******************************************************************** -->
+  <!-- Attribute Release Policy (ARP) XML format -->
   <complexType name="attributeType">
     <attribute name="name" type="string"/>
     <attribute name="value" type="string"/>
@@ -147,6 +145,7 @@
       </sequence>
     </complexType>
   </element>
+  <!-- ******************************************************************** -->
 
   <complexType name="mapType">
     <simpleContent>
@@ -197,7 +196,9 @@
     </complexType>
   </element>
 
-  <element name="bodington-attributor">
+  <!-- ******************************************************************** -->
+  <!-- BodingtonAttributor config -->
+  <element name="BodingtonAttributor">
     <complexType>
       <sequence>
         <element name="urn" type="string"/>
@@ -205,16 +206,55 @@
       </sequence>
     </complexType>
   </element>
+  <!-- ******************************************************************** -->
 
-  <element name="plugin">
+  <!-- ******************************************************************** -->
+  <!-- The format of the XML returned by an attributor -->
+  <complexType name="attributorAttributeType">
+    <simpleContent>
+      <extension base="string">
+        <attribute name="name" type="string"/>
+        <attribute name="value" type="string"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <element name="userAttributes">
     <complexType>
       <sequence>
-        <element name="name" type="string"/>
-        <element name="description" type="string"/>
-        <element name="log-file" type="string"/>
-        <any minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+        <element name="attribute" type="gx:attributorAttributeType" maxOccurs="unbounded" />
       </sequence>
     </complexType>
   </element>
+  <!-- ******************************************************************** -->
+
+  <!-- ******************************************************************** -->
+  <!-- FlatFileAuthenticator/FlatFileAttributor config -->
+  <complexType name="ffUserAttributeType">
+    <simpleContent>
+      <extension base="string">
+        <attribute name="name" type="string"/>
+        <attribute name="value" type="string"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <complexType name="ffUserType">
+    <sequence>
+      <element name="Username" type="string" />
+      <element name="Password" type="string" />
+      <element name="UserAttribute" type="gx:ffUserAttributeType" minOccurs="0" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <element name="FlatFileAuthenticatorConfig">
+    <complexType>
+      <sequence>
+        <element name="Domain" type="string" />
+        <element name="User" type="gx:ffUserType" maxOccurs="unbounded" />
+      </sequence>
+    </complexType>
+  </element>
+  <!-- ******************************************************************** -->
 
 </schema>
