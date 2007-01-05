@@ -77,6 +77,9 @@
   <xb:qname name="gxidp:mapType" javaname="Map"/>
   <xb:qname name="gxidp:mapType" javaname="Map"/>
   <xb:qname name="gxidp:mapType" javaname="Map"/>
+  <xb:qname name="gxidp:ffUserAttributeType" javaname="UserAttribute"/>
+  <xb:qname name="gxidp:ffUserType" javaname="User"/>
+  <xb:qname name="gxidp:attributorAttributeType" javaname="AttributorAttribute"/>
   
   <!-- Mappings from types defined in guanxi-sp.xsd to Java classes -->
   <xb:qname name="gxsp:guardInfoType" javaname="GuardInfo"/>
