@@ -18,12 +18,6 @@
   </target>
 
   <target name="beans">
-    <!--
-    <delete dir="${src.gen.dir}" />
-    <mkdir dir="${src.gen.dir}" />
-    -->
-    <delete file="${lib.dir}/${beans.jar}" />
-
     <xmlbean schema="${xsd.home}"
              download="true"
              noupa="true"
