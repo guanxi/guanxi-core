@@ -150,7 +150,7 @@
   <complexType name="mapType">
     <simpleContent>
       <extension base="string">
-        <attribute name="info" type="string"/>
+        <attribute name="name" type="string"/>
         <attribute name="attrName" type="string"/>
         <attribute name="attrValue" type="string"/>
         <attribute name="mappedName" type="string"/>
