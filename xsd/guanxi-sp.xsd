@@ -29,6 +29,7 @@
 
   <complexType name="cookieType">
     <sequence>
+      <element name="Prefix" type="string"/>
       <element name="Domain" type="string"/>
       <element name="Path" type="string"/>
       <element name="Age" type="gx:cookieAgeType"/>
