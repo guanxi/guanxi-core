@@ -16,7 +16,6 @@
         ant sp-guard    : Builds the Guanxi Service Provider (SP) Guard. The SP can be found in SP/dist/webapp/guard
         ant sp-engine   : Builds the Guanxi Service Provider (SP) Engine. The SP can be found in SP/dist/webapp/engine
         ant sp-combined : Builds the Guanxi Service Provider (SP) Engine. The SP can be found in SP/dist/webapp/engine
-        ant samuel      : Builds the SAMUEL SAML tookit. SAMUEL can be found in samuel/dist/jar/samuel.jar
         ant clean       : Cleans out all previous builds of all Guanxi components
     </echo>
   </target>
@@ -25,24 +24,17 @@
   <target name="clean-all" description="Cleans all the Guanxi modules">
     <ant antfile="build.xml" dir="../Common" target="clean"/>
     <ant antfile="build.xml" dir="../IdP" target="clean"/>
-    <ant antfile="build.xml" dir="../samuel" target="clean"/>
     <ant antfile="build.xml" dir="../SP" target="clean"/>
     <ant antfile="build.xml" dir="../WAYF" target="clean"/>
   </target>
 
   <!-- Builds the entire Guanxi suite of components -->
   <target name="build-all" description="Builds all the Guanxi components">
-    <ant antfile="build.xml" dir="${samuel.home}" target="all"/>
     <ant antfile="build.xml" dir="${guanxi-common.home}" target="all"/>
     <ant antfile="build.xml" dir="${guanxi-idp.home}" target="all"/>
     <ant antfile="build.xml" dir="${guanxi-wayf.home}" target="all"/>
     <ant antfile="build.xml" dir="${guanxi-sp.home}" target="guard"/>
     <ant antfile="build.xml" dir="${guanxi-sp.home}" target="engine"/>
-  </target>
-
-  <!-- Builds SAMUEL -->
-  <target name="samuel" description="Builds SAMUEL">
-    <ant antfile="build.xml" dir="${samuel.home}" target="all"/>
   </target>
 
   <!-- Builds Guanxi::IdP -->
@@ -71,7 +63,6 @@
 
   <!-- Cleans out the Guanxi components' distribution directories -->
   <target name="clean" description="Removes the Guanxi components distribution directories">
-    <ant antfile="build.xml" dir="${samuel.home}" target="clean"/>
     <ant antfile="build.xml" dir="${guanxi-common.home}" target="clean"/>
     <ant antfile="build.xml" dir="${guanxi-idp.home}" target="clean"/>
     <ant antfile="build.xml" dir="${guanxi-wayf.home}" target="clean"/>
