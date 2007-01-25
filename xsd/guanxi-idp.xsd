@@ -147,6 +147,12 @@
   </element>
   <!-- ******************************************************************** -->
 
+  <!-- ******************************************************************** -->
+  <!-- Map file format -->
+  <complexType name="mapIncludeType">
+    <attribute name="mapFile" type="string"/>
+  </complexType>
+
   <complexType name="mapType">
     <simpleContent>
       <extension base="string">
@@ -163,10 +169,12 @@
   <element name="AttributeMap">
     <complexType>
       <sequence>
+        <element name="include" type="gx:mapIncludeType" minOccurs="0" maxOccurs="unbounded" />
         <element name="map" type="gx:mapType" maxOccurs="unbounded" />
       </sequence>
     </complexType>
   </element>
+  <!-- ******************************************************************** -->
 
   <complexType name="authCookieHandlerType">
     <attribute name="type" type="string"/>
