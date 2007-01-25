@@ -117,6 +117,10 @@
 
   <!-- ******************************************************************** -->
   <!-- Attribute Release Policy (ARP) XML format -->
+  <complexType name="arpIncludeType">
+    <attribute name="arpFile" type="string"/>
+  </complexType>
+
   <complexType name="attributeType">
     <attribute name="name" type="string"/>
     <attribute name="value" type="string"/>
@@ -140,8 +144,9 @@
   <element name="arp">
     <complexType>
       <sequence>
-        <element name="bag" type="gx:bagType" maxOccurs="unbounded" />
-        <element name="provider" type="gx:providerType" maxOccurs="unbounded" />
+        <element name="include" type="gx:arpIncludeType" minOccurs="0" maxOccurs="unbounded" />
+        <element name="bag" type="gx:bagType" minOccurs="0" maxOccurs="unbounded" />
+        <element name="provider" type="gx:providerType" minOccurs="0" maxOccurs="unbounded" />
       </sequence>
     </complexType>
   </element>
@@ -151,6 +156,17 @@
   <!-- Map file format -->
   <complexType name="mapIncludeType">
     <attribute name="mapFile" type="string"/>
+  </complexType>
+
+  <complexType name="mapRefType">
+    <attribute name="name" type="string"/>
+  </complexType>
+
+  <complexType name="mapProviderType">
+    <sequence>
+      <element name="mapRef" type="gx:mapRefType" maxOccurs="unbounded" />
+    </sequence>
+    <attribute name="providerId" type="string"/>
   </complexType>
 
   <complexType name="mapType">
@@ -170,7 +186,8 @@
     <complexType>
       <sequence>
         <element name="include" type="gx:mapIncludeType" minOccurs="0" maxOccurs="unbounded" />
-        <element name="map" type="gx:mapType" maxOccurs="unbounded" />
+        <element name="map" type="gx:mapType" minOccurs="0" maxOccurs="unbounded" />
+        <element name="provider" type="gx:mapProviderType" minOccurs="0" maxOccurs="unbounded" />
       </sequence>
     </complexType>
   </element>
