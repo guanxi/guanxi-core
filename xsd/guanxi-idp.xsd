@@ -7,6 +7,8 @@
         blockDefault="substitution"
         version="2.0">
 
+  <!-- ******************************************************************** -->
+  <!-- The format of the XML for idp.xml -->
   <complexType name="credsType">
     <sequence>
       <element name="keystore-type" type="string"/>
@@ -51,11 +53,25 @@
       </sequence>
     </complexType>
   </element>
+  <!-- ******************************************************************** -->
 
+  <!-- ******************************************************************** -->
+  <!-- The format of the XML for authenticators.xml -->
   <complexType name="authenticatorType">
     <attribute name="type" type="string"/>
   </complexType>
 
+  <element name="authenticators">
+    <complexType>
+      <sequence>
+        <element name="authenticator" type="gx:authenticatorType" maxOccurs="unbounded" />
+      </sequence>
+    </complexType>
+  </element>
+  <!-- ******************************************************************** -->
+
+  <!-- ******************************************************************** -->
+  <!-- The format of the XML for attributors.xml -->
   <complexType name="attributorType">
     <attribute name="type" type="string"/>
   </complexType>
@@ -67,16 +83,30 @@
       </sequence>
     </complexType>
   </element>
+  <!-- ******************************************************************** -->
 
-  <element name="authenticators">
+  <!-- ******************************************************************** -->
+  <!-- The format of the XML for AuthCookieHandlers.xml -->
+  <complexType name="authCookieHandlerType">
+    <attribute name="type" type="string"/>
+  </complexType>
+
+  <element name="auth-cookie-handlers">
     <complexType>
       <sequence>
-        <element name="authenticator" type="gx:authenticatorType" maxOccurs="unbounded" />
+        <element name="cookie-handler" type="gx:authCookieHandlerType" minOccurs="0" maxOccurs="unbounded" />
       </sequence>
     </complexType>
   </element>
 
-
+  <complexType name="cookieType">
+    <simpleContent>
+      <extension base="string">
+        <attribute name="name" type="string"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+  <!-- ******************************************************************** -->
 
   <!-- ******************************************************************** -->
   <!-- The format of the XML for the LDAP authenticator and attributor -->
@@ -96,12 +126,26 @@
   <element name="ldap">
     <complexType>
       <sequence>
-        <element name="server" type="gx:serverType" maxOccurs="unbounded" />
+        <element name="domain" type="string" minOccurs="1" maxOccurs="1" />
+        <element name="server" type="gx:serverType" minOccurs="1" maxOccurs="unbounded" />
       </sequence>
     </complexType>
   </element>
   <!-- ******************************************************************** -->
 
+  <!-- ******************************************************************** -->
+  <!-- The format of the XML for BodingtonCookieHandler.xml -->
+  <element name="BodingtonCookieHandler">
+    <complexType>
+      <sequence>
+        <element name="cookie" type="gx:cookieType"/>
+      </sequence>
+    </complexType>
+  </element>
+  <!-- ******************************************************************** -->
+
+  <!-- ******************************************************************** -->
+  <!-- The format of the XML for wayf.xml -->
   <complexType name="wayfType">
     <attribute name="name" type="string"/>
     <attribute name="url" type="string"/>
@@ -114,6 +158,7 @@
       </sequence>
     </complexType>
   </element>
+  <!-- ******************************************************************** -->
 
   <!-- ******************************************************************** -->
   <!-- Attribute Release Policy (ARP) XML format -->
@@ -192,34 +237,6 @@
     </complexType>
   </element>
   <!-- ******************************************************************** -->
-
-  <complexType name="authCookieHandlerType">
-    <attribute name="type" type="string"/>
-  </complexType>
-
-  <element name="auth-cookie-handlers">
-    <complexType>
-      <sequence>
-        <element name="cookie-handler" type="gx:authCookieHandlerType" minOccurs="0" maxOccurs="unbounded" />
-      </sequence>
-    </complexType>
-  </element>
-
-  <complexType name="cookieType">
-    <simpleContent>
-      <extension base="string">
-        <attribute name="name" type="string"/>
-      </extension>
-    </simpleContent>
-  </complexType>
-
-  <element name="BodingtonCookieHandler">
-    <complexType>
-      <sequence>
-        <element name="cookie" type="gx:cookieType"/>
-      </sequence>
-    </complexType>
-  </element>
 
   <!-- ******************************************************************** -->
   <!-- BodingtonAttributor config -->
