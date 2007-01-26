@@ -70,6 +70,7 @@
   <element name="Engine">
     <complexType>
       <sequence>
+        <element name="ID" type="string" />
         <element name="NameQualifier" type="string" />
         <element name="Keystore" type="string" />
         <element name="KeystorePassword" type="string" />
