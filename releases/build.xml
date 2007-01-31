@@ -10,7 +10,6 @@
 
   <!-- Where the modules are checked out to in the checkout directory -->
   <property name="core.dir" value="${tmp.dir}/${tmp.guanxi-core.home}" />
-  <property name="samuel.dir" value="${tmp.dir}/${tmp.samuel.home}" />
   <property name="common.dir" value="${tmp.dir}/${tmp.guanxi-common.home}" />
   <property name="idp.dir" value="${tmp.dir}/${tmp.guanxi-idp.home}" />
   <property name="wayf.dir" value="${tmp.dir}/${tmp.guanxi-wayf.home}" />
@@ -27,7 +26,6 @@
       ant release-idp        : Build source and binary releases of the IdP
       ant release-sp         : Build source and binary releases of the SP Engine and Guard
       ant release-wayf       : Build source and binary releases of the WAYF
-      ant release-samuel     : Build source and binary releases of SAMUEL
       ant release-guanxi-src : Build a source release of all the Guanxi components
 
       To configure releases have a look at howto.txt
@@ -47,7 +45,6 @@
         -- Guanxi::IdP    : ${release.idp.cvs.tag}
         -- Guanxi::Core   : ${release.core.cvs.tag}
         -- Guanxi::Common : ${release.common.cvs.tag}
-        -- SAMUEL         : ${release.samuel.cvs.tag}
         -- gx_lib         : ${release.gx_lib.cvs.tag}
     </echo>
 
@@ -64,14 +61,12 @@
     <!-- Clean out any old builds -->
     <ant antfile="build.xml" dir="${tmp.dir}/${tmp.guanxi-idp.home}" target="clean"/>
     <ant antfile="build.xml" dir="${tmp.dir}/${tmp.guanxi-common.home}" target="clean"/>
-    <ant antfile="build.xml" dir="${tmp.dir}/${tmp.samuel.home}" target="clean"/>
 
     <!-- Build a source release archive -->
     <copy todir="${idp.release.dir}/guanxi-idp-src-${release.version}">
       <fileset dir="${tmp.dir}">
         <include name="${tmp.guanxi-core.home}/**"/>
         <include name="${tmp.guanxi-common.home}/**"/>
-        <include name="${tmp.samuel.home}/**"/>
         <include name="${tmp.guanxi-gx_lib.home}/**"/>
         <include name="${tmp.guanxi-idp.home}/**"/>
       </fileset>
@@ -125,7 +120,6 @@
         -- Guanxi::SP     : ${release.sp.cvs.tag}
         -- Guanxi::Core   : ${release.core.cvs.tag}
         -- Guanxi::Common : ${release.common.cvs.tag}
-        -- SAMUEL         : ${release.samuel.cvs.tag}
         -- gx_lib         : ${release.gx_lib.cvs.tag}
     </echo>
 
@@ -142,14 +136,12 @@
     <!-- Clean out any old builds -->
     <ant antfile="build.xml" dir="${tmp.dir}/${tmp.guanxi-sp.home}" target="clean"/>
     <ant antfile="build.xml" dir="${tmp.dir}/${tmp.guanxi-common.home}" target="clean"/>
-    <ant antfile="build.xml" dir="${tmp.dir}/${tmp.samuel.home}" target="clean"/>
 
     <!-- Build a source release archive -->
     <copy todir="${sp.release.dir}/guanxi-sp-src-${release.version}">
       <fileset dir="${tmp.dir}">
         <include name="${tmp.guanxi-core.home}/**"/>
         <include name="${tmp.guanxi-common.home}/**"/>
-        <include name="${tmp.samuel.home}/**"/>
         <include name="${tmp.guanxi-gx_lib.home}/**"/>
         <include name="${tmp.guanxi-sp.home}/**"/>
       </fileset>
@@ -219,7 +211,6 @@
         -- Guanxi::WAYF   : ${release.wayf.cvs.tag}
         -- Guanxi::Core   : ${release.core.cvs.tag}
         -- Guanxi::Common : ${release.common.cvs.tag}
-        -- SAMUEL         : ${release.samuel.cvs.tag}
         -- gx_lib         : ${release.gx_lib.cvs.tag}
     </echo>
 
@@ -236,14 +227,12 @@
     <!-- Clean out any old builds -->
     <ant antfile="build.xml" dir="${tmp.dir}/${tmp.guanxi-wayf.home}" target="clean"/>
     <ant antfile="build.xml" dir="${tmp.dir}/${tmp.guanxi-common.home}" target="clean"/>
-    <ant antfile="build.xml" dir="${tmp.dir}/${tmp.samuel.home}" target="clean"/>
 
     <!-- Build a source release archive -->
     <copy todir="${wayf.release.dir}/guanxi-wayf-src-${release.version}">
       <fileset dir="${tmp.dir}">
         <include name="${tmp.guanxi-core.home}/**"/>
         <include name="${tmp.guanxi-common.home}/**"/>
-        <include name="${tmp.samuel.home}/**"/>
         <include name="${tmp.guanxi-gx_lib.home}/**"/>
         <include name="${tmp.guanxi-wayf.home}/**"/>
       </fileset>
@@ -284,81 +273,6 @@
     <delete dir="${wayf.release.dir}/guanxi-wayf-src-${release.version}" />
   </target>
 
-  <target name="release-samuel" description="Builds a release of SAMUEL">
-    <property file="${release.properties.dir}/samuel.release.properties" />
-
-    <!-- Where the SAMUEL release files will be -->
-    <property name="samuel.release.dir" value="samuel-release-${release.version}" />
-
-    <echo>
-      Building SAMUEL ${release.version} on ${release.date}
-
-      Using tags:
-        -- Guanxi::Core   : ${release.core.cvs.tag}
-        -- SAMUEL         : ${release.samuel.cvs.tag}
-        -- gx_lib         : ${release.gx_lib.cvs.tag}
-    </echo>
-
-    <delete dir="${tmp.dir}" />
-    <mkdir dir="${samuel.release.dir}" />
-    <mkdir dir="${tmp.dir}" />
-
-    <!-- Get the common modules from CVS -->
-    <antcall target="getCommonModules" />
-
-    <!-- Get SAMUEL from CVS -->
-    <cvs cvsRoot="${cvs.root}"
-         package="samuel"
-         tag="${release.samuel.cvs.tag}"
-         dest="${tmp.dir}" />
-
-    <!-- Clean out any old builds -->
-    <ant antfile="build.xml" dir="${tmp.dir}/${tmp.samuel.home}" target="clean"/>
-
-    <!-- Build a source release archive -->
-    <copy todir="${samuel.release.dir}/samuel-src-${release.version}">
-      <fileset dir="${tmp.dir}">
-        <include name="${tmp.guanxi-core.home}/**"/>
-        <include name="${tmp.samuel.home}/**"/>
-        <include name="${tmp.guanxi-gx_lib.home}/**"/>
-      </fileset>
-    </copy>
-    <tar tarfile="${samuel.release.dir}/samuel-src-${release.version}.tar">
-      <tarfileset dir="${samuel.release.dir}">
-        <include name="samuel-src-${release.version}/**"/>
-      </tarfileset>
-    </tar>
-    <gzip zipfile="${samuel.release.dir}/samuel-src-${release.version}.tar.gz" src="${samuel.release.dir}/samuel-src-${release.version}.tar" />
-
-    <!-- Use the Core module to build SAMUEL -->
-    <ant antfile="build.xml" dir="${core.dir}" target="samuel"/>
-
-    <!-- Build a binary release archive -->
-    <copy todir="${samuel.release.dir}/samuel-bin-${release.version}">
-      <fileset dir="${tmp.dir}/${tmp.samuel.bin.dir}">
-        <include name="**"/>
-      </fileset>
-    </copy>
-    <tar tarfile="${samuel.release.dir}/samuel-bin-${release.version}.tar">
-      <tarfileset dir="${samuel.release.dir}">
-        <include name="samuel-bin-${release.version}/**"/>
-      </tarfileset>
-    </tar>
-    <gzip zipfile="${samuel.release.dir}/samuel-bin-${release.version}.tar.gz" src="${samuel.release.dir}/samuel-bin-${release.version}.tar" />
-
-    <!-- Copy the config files to build this release again -->
-    <antcall target="copyBuildFiles">
-      <param name="module.release.dir" value="${samuel.release.dir}" />
-      <param name="properties.file" value="${release.properties.dir}/samuel.release.properties" />
-    </antcall>
-
-    <!-- Tidy up -->
-    <delete file="${samuel.release.dir}/samuel-bin-${release.version}.tar" />
-    <delete dir="${samuel.release.dir}/samuel-bin-${release.version}" />
-    <delete file="${samuel.release.dir}/samuel-src-${release.version}.tar" />
-    <delete dir="${samuel.release.dir}/samuel-src-${release.version}" />
-  </target>
-
   <target name="release-guanxi-src" description="Builds a release of the Guanxi source">
     <property file="${release.properties.dir}/gx-src.release.properties" />
     
@@ -373,7 +287,6 @@
         -- Guanxi::SP     : ${release.sp.cvs.tag}
         -- Guanxi::Core   : ${release.core.cvs.tag}
         -- Guanxi::Common : ${release.common.cvs.tag}
-        -- SAMUEL         : ${release.samuel.cvs.tag}
         -- gx_lib         : ${release.gx_lib.cvs.tag}
     </echo>
 
@@ -419,12 +332,6 @@
     <cvs cvsRoot="${cvs.root}"
          package="-P Common"
          tag="${release.common.cvs.tag}"
-         dest="${tmp.dir}" />
-
-    <!-- Get SAMUEL from CVS -->
-    <cvs cvsRoot="${cvs.root}"
-         package="-P samuel"
-         tag="${release.samuel.cvs.tag}"
          dest="${tmp.dir}" />
 
     <!-- Get gx_lib from CVS -->
