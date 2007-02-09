@@ -79,7 +79,10 @@
   <xb:qname name="gxidp:ffUserAttributeType" javaname="UserAttribute"/>
   <xb:qname name="gxidp:ffUserType" javaname="User"/>
   <xb:qname name="gxidp:attributorAttributeType" javaname="AttributorAttribute"/>
-  
+  <xb:qname name="gxidp:ssoCookieAgeUnitsType" javaname="SSOCookieAgeUnits"/>
+  <xb:qname name="gxidp:ssoCookieAgeType" javaname="SSOCookieAge"/>
+  <xb:qname name="gxidp:ssoCookieType" javaname="SSOCookie"/>
+
   <!-- Mappings from types defined in guanxi-sp.xsd to Java classes -->
   <xb:qname name="gxsp:guardInfoType" javaname="GuardInfo"/>
   <xb:qname name="gxsp:cookieType" javaname="Cookie"/>
