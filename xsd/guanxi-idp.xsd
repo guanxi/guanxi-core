@@ -9,6 +9,36 @@
 
   <!-- ******************************************************************** -->
   <!-- The format of the XML for idp.xml -->
+  <simpleType name="ssoCookieAgeUnitsType">
+    <restriction base="string">
+      <enumeration value="seconds"/>
+      <enumeration value="minutes"/>
+      <enumeration value="hours"/>
+      <enumeration value="days"/>
+      <enumeration value="weeks"/>
+      <enumeration value="months"/>
+      <enumeration value="years"/>
+      <enumeration value="transient"/>
+    </restriction>
+  </simpleType>
+  
+  <complexType name="ssoCookieAgeType">
+    <simpleContent>
+      <extension base="string">
+        <attribute name="units" type="gx:ssoCookieAgeUnitsType"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <complexType name="ssoCookieType">
+    <sequence>
+      <element name="Domain" type="string"/>
+      <element name="Path" type="string"/>
+      <element name="Age" type="gx:ssoCookieAgeType"/>
+      <element name="Prefix" type="string"/>
+    </sequence>
+  </complexType>
+
   <complexType name="credsType">
     <sequence>
       <element name="keystore-type" type="string"/>
@@ -46,6 +76,8 @@
   <element name="idp">
     <complexType>
       <sequence>
+        <element name="ID" type="string"/>
+        <element name="Cookie" type="gx:ssoCookieType" />
         <element name="service-provider" type="gx:serviceProviderType" maxOccurs="unbounded" />
         <element name="identity" type="gx:identityType" maxOccurs="unbounded" />
         <element name="creds" type="gx:credsType" maxOccurs="unbounded" />
