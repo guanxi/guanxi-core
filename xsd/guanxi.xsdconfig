@@ -2,6 +2,7 @@
     		   xmlns:gxidp="urn:guanxi:idp"
     		   xmlns:gxsp="urn:guanxi:sp"
     		   xmlns:gxmeta="urn:guanxi:metadata"
+           xmlns:gxf="urn:guanxi:filters"
            xmlns:samlp1="urn:oasis:names:tc:SAML:1.0:protocol"
            xmlns:saml1="urn:oasis:names:tc:SAML:1.0:assertion"
            xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
@@ -23,7 +24,11 @@
   <xb:namespace uri="urn:guanxi:metadata">
     <xb:package>org.guanxi.xal.saml2.metadata</xb:package>
   </xb:namespace>
-    
+
+  <xb:namespace uri="urn:guanxi:filters">
+    <xb:package>org.guanxi.xal.filters</xb:package>
+  </xb:namespace>
+
   <xb:namespace uri="urn:oasis:names:tc:SAML:1.0:protocol">
     <xb:package>org.guanxi.xal.saml_1_0.protocol</xb:package>
   </xb:namespace>
@@ -95,5 +100,8 @@
   <xb:qname name="gxmeta:guardRoleDescriptorExtensionsType" javaname="GuardRoleDescriptorExtensions"/>
   <xb:qname name="gxmeta:attributeServiceExtensionsType" javaname="AttributeServiceExtensionsType"/>
   <xb:qname name="gxmeta:GuanxiGuardDescriptorType" javaname="GuanxiGuardDescriptor"/>
+  
+  <!-- Mappings from types defined in guanxi-filters.xsd to Java classes -->
+  <xb:qname name="gxf:filterType" javaname="Filter"/>
 
 </xb:config>
