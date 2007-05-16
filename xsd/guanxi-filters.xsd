@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<schema targetNamespace="urn:guanxi:filters"
+        xmlns:gxf="urn:guanxi:filters"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified"
+        blockDefault="substitution"
+        version="2.0">
+  
+  <complexType name="filterType">
+  	<attribute name="name" type="string"/>
+  	<attribute name="description" type="string"/>
+  	<attribute name="className" type="string"/>
+  </complexType>
+
+  <element name="Filters">
+    <complexType>
+      <sequence>
+      	<element name="Filter" type="gxf:filterType" minOccurs="0" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+</schema>
