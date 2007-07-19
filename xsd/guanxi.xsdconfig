@@ -87,6 +87,8 @@
   <xb:qname name="gxidp:ssoCookieAgeUnitsType" javaname="SSOCookieAgeUnits"/>
   <xb:qname name="gxidp:ssoCookieAgeType" javaname="SSOCookieAge"/>
   <xb:qname name="gxidp:ssoCookieType" javaname="SSOCookie"/>
+  <xb:qname name="gxidp:authenticatorPagesType" javaname="AuthenticatorPages"/>
+  <xb:qname name="gxidp:authPageType" javaname="AuthPage"/>
 
   <!-- Mappings from types defined in guanxi-sp.xsd to Java classes -->
   <xb:qname name="gxsp:guardInfoType" javaname="GuardInfo"/>
