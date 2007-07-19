@@ -66,6 +66,20 @@
     <attribute name="creds" type="string"/>
   </complexType>
 
+  <complexType name="authPageType">
+    <simpleContent>
+      <extension base="string">
+        <attribute name="providerId" type="string"/>
+        <attribute name="url" type="string"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+  <complexType name="authenticatorPagesType">
+    <sequence>
+      <element name="auth-page" type="gx:authPageType" minOccurs="1" maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
   <complexType name="debugType">
     <sequence>
       <element name="SypthonAttributeQueries" type="string" minOccurs="0"/>
@@ -81,6 +95,7 @@
         <element name="service-provider" type="gx:serviceProviderType" maxOccurs="unbounded" />
         <element name="identity" type="gx:identityType" maxOccurs="unbounded" />
         <element name="creds" type="gx:credsType" maxOccurs="unbounded" />
+        <element name="authenticator-pages" type="gx:authenticatorPagesType" minOccurs="1" maxOccurs="1" />
         <element name="Debug" type="gx:debugType" minOccurs="0" />
       </sequence>
     </complexType>
