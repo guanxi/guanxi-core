@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <name>Guanxi</name>
+  <groupId>org.guanxi</groupId>
+  <artifactId>guanxi-base</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0</version>
+  
+  <mailingLists>
+    <mailingList>
+      <name>Guanxi Development List</name>
+      <subscribe>https://lists.sourceforge.net/lists/listinfo/guanxi-development</subscribe>
+      <unsubscribe>https://lists.sourceforge.net/lists/listinfo/guanxi-development</unsubscribe>
+      <post>guanxi-development@lists.sourceforge.net</post>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=guanxi-development</archive>
+    </mailingList>
+  </mailingLists>
+
+  <licenses>
+    <license>
+      <name>MOZILLA PUBLIC LICENSE Version 1.1</name>
+      <url>http://www.mozilla.org/MPL/MPL-1.1.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+<!--
+  <scm>
+    <connection>scm:svn:https://source.uhi.ac.uk/svn/ctrep/trunk/</connection>
+    <developerConnection>scm:svn:https://source.uhi.ac.uk/svn/ctrep/trunk/</developerConnection>
+    <url>https://source.uhi.ac.uk/svn/ctrep</url>
+  </scm>
+  -->
+  
+  <repositories>
+    <repository>
+      <id>source.uhi.ac.uk-repository</id>
+      <name>UHI Maven 2.x Repository</name>
+      <url>http://source.uhi.ac.uk/mvn</url>
+      <snapshots>
+        <enabled>false</enabled>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <build>
+    <plugins>
+      <plugin>
+        <inherited>true</inherited>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+    </plugins>
+
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-webdav</artifactId>
+        <version>1.0-beta-2</version>
+      </extension>
+    </extensions>
+  </build>
+
+<!--
+  <modules>
+    <module>Core/xmlbeans</module>
+    <module>Common</module>
+  </modules>
+-->
+</project>
