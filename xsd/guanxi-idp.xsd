@@ -157,6 +157,17 @@
 
   <!-- ******************************************************************** -->
   <!-- The format of the XML for the LDAP authenticator and attributor -->
+  <complexType name="attributeValueType">
+    <attribute name="name" type="string"/>
+    <attribute name="position" type="string"/>
+  </complexType>
+
+  <complexType name="valuesType">
+    <sequence>
+      <element name="attribute" type="gx:attributeValueType" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
   <complexType name="serverType">
     <sequence>
       <element name="address" type="string"/>
@@ -174,6 +185,7 @@
     <complexType>
       <sequence>
         <element name="domain" type="string" minOccurs="1" maxOccurs="1" />
+        <element name="values" type="gx:valuesType" minOccurs="0" maxOccurs="1" />
         <element name="server" type="gx:serverType" minOccurs="1" maxOccurs="unbounded" />
       </sequence>
     </complexType>
