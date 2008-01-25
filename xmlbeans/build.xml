@@ -3,12 +3,12 @@
 
   <taskdef name="xmlbean"
            classname="org.apache.xmlbeans.impl.tool.XMLBean"
-           classpath="${xmlbeans.home}/lib/xbean.jar:${xmlbeans.home}/lib/jsr173_1.0_api.jar" />
+           classpath="${xmlbeans.home}/xbean-${xmlbeans.version}.jar:${xmlbeans.home}/jsr173_1.0_api-${xmlbeans.version}.jar" />
 
   <!-- CLASSPATH -->
   <path id="classpath">
-    <pathelement path="${xmlbeans.home}/lib/xbean.jar" />
-    <pathelement path="${xmlbeans.home}/lib/jsr173_1.0_api.jar" />
+    <pathelement path="${xmlbeans.home}/xbean-${xmlbeans.version}.jar" />
+    <pathelement path="${xmlbeans.home}/jsr173_1.0_api-${xmlbeans.version}.jar" />
   </path>
 
   <target name="help" description="Displays usage of this build file">
