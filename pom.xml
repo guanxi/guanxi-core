@@ -7,6 +7,25 @@
   <artifactId>guanxi-base</artifactId>
   <packaging>pom</packaging>
   <version>2.0</version>
+
+  <developers>
+    <developer>
+      <id>alistairskye</id>
+      <name>Alistair Young</name>
+      <email>alistair@codebrane.com</email>
+      <roles>
+        <role>Project Manager</role>
+        <role>Architect</role>
+      </roles>
+      <organization>codeBrane</organization>
+      <timezone>0</timezone>
+    </developer>
+   </developers>
+
+  <issueManagement>
+    <system>SourceForge</system>
+    <url>http://sourceforge.net/tracker/?group_id=134770</url>
+  </issueManagement>
   
   <mailingLists>
     <mailingList>
@@ -26,13 +45,11 @@
     </license>
   </licenses>
 
-<!--
   <scm>
-    <connection>scm:svn:https://source.uhi.ac.uk/svn/ctrep/trunk/</connection>
-    <developerConnection>scm:svn:https://source.uhi.ac.uk/svn/ctrep/trunk/</developerConnection>
-    <url>https://source.uhi.ac.uk/svn/ctrep</url>
+    <connection>scm:cvs:guanxi.cvs.sourceforge.net:/cvsroot/guanxi</connection>
+    <developerConnection>scm:cvs:guanxi.cvs.sourceforge.net:/cvsroot/guanxi</developerConnection>
+    <url>http://guanxi.cvs.sourceforge.net</url>
   </scm>
-  -->
   
   <repositories>
     <repository>
@@ -45,6 +62,20 @@
       </snapshots>
     </repository>
   </repositories>
+
+  <reports>
+    <report>maven-developer-activity-plugin</report>
+    <report>maven-file-activity-plugin</report>
+    <report>maven-javadoc-plugin</report>
+    <report>maven-surefire-plugin</report>
+  </reports>
+
+  <distributionManagement>
+    <site>
+      <id>codeBrane</id> 
+      <url>ftp://codebrane.com/guanxi</url>
+    </site>
+  </distributionManagement>
 
   <build>
     <plugins>
@@ -64,6 +95,15 @@
         <groupId>org.apache.maven.wagon</groupId>
         <artifactId>wagon-webdav</artifactId>
         <version>1.0-beta-2</version>
+      </extension>
+
+      <extension>
+        <version>1.0-beta-2-SNAPSHOT</version>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-provider-api</artifactId>
+        <!--
+        <artifactId>wagon-ftp</artifactId>
+        -->
       </extension>
     </extensions>
   </build>
@@ -182,11 +222,4 @@
       <!-- **************************************************** -->
     </dependencies>
   </dependencyManagement>
-
-<!--
-  <modules>
-    <module>Core/xmlbeans</module>
-    <module>Common</module>
-  </modules>
--->
 </project>
