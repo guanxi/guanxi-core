@@ -222,4 +222,12 @@
       <!-- **************************************************** -->
     </dependencies>
   </dependencyManagement>
+
+  <modules>
+    <module>../Common</module>
+    <module>../Engine</module>
+    <module>../Guard</module>
+    <module>../IdP2</module>
+    <module>../WAYF</module>
+  </modules>
 </project>
