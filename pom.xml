@@ -20,7 +20,7 @@
       <organization>codeBrane</organization>
       <timezone>0</timezone>
     </developer>
-   </developers>
+  </developers>
 
   <issueManagement>
     <system>SourceForge</system>
@@ -71,10 +71,18 @@
   </reports>
 
   <distributionManagement>
+    <!--
     <site>
       <id>source.uhi.ac.uk-repository</id> 
       <url>http://source.uhi.ac.uk/mvn</url>
     </site>
+    -->
+
+    <repository>
+      <id>source.uhi.ac.uk-repository</id>
+      <name>UHI Maven2 repository</name>
+      <url>http://source.uhi.ac.uk/mvn</url>
+    </repository>
   </distributionManagement>
 
   <build>
