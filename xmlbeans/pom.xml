@@ -4,6 +4,13 @@
   <artifactId>guanxi-beans</artifactId>
   <groupId>org.guanxi</groupId>
   <version>1.3.5</version>
+  
+  <parent>
+    <artifactId>guanxi-core</artifactId>
+    <groupId>org.guanxi</groupId>
+    <version>2.0.0</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
 
   <reporting>
     <plugins>
