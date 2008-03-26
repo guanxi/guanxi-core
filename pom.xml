@@ -73,8 +73,8 @@
   <distributionManagement>
     <!--
     <site>
-      <id>source.uhi.ac.uk-repository</id> 
-      <url>http://source.uhi.ac.uk/mvn</url>
+      <id>codebrane-ftp-repository</id> 
+      <url>ftp://ftp.codebrane.com</url>
     </site>
     -->
 
@@ -108,7 +108,7 @@
       <extension>
         <groupId>org.apache.maven.wagon</groupId>
          <artifactId>wagon-ftp</artifactId>
-         <version>1.0-alpha-6</version>
+         <version>1.0-beta-2</version>
       </extension>
     </extensions>
   </build>
@@ -120,7 +120,7 @@
       <dependency>
         <groupId>org.guanxi</groupId>
         <artifactId>guanxi-common</artifactId>
-        <version>1.3.6</version>
+        <version>2.0.0</version>
       </dependency>
       
       <dependency>
@@ -223,6 +223,30 @@
         <artifactId>servletapi</artifactId>
         <version>2.4</version>
         <scope>provided</scope>
+      </dependency>
+      <!-- **************************************************** -->
+
+      <!-- **************************************************** -->
+      <!-- Quartz -->
+      <dependency>
+        <groupId>opensymphony</groupId>
+        <artifactId>quartz</artifactId>
+        <version>1.6.0</version>
+      </dependency>
+
+      <!-- Should be able to remove this when this bug is fixed:
+           http://jira.opensymphony.com/browse/QUARTZ-562
+      -->
+      <dependency>
+        <groupId>jta</groupId>
+        <artifactId>jta</artifactId>
+        <version>1.0.1b</version>
+      </dependency>
+
+      <dependency>
+        <groupId>commons-collections</groupId>
+        <artifactId>commons-collections</artifactId>
+        <version>3.2</version>
       </dependency>
       <!-- **************************************************** -->
     </dependencies>
