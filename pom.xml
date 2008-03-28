@@ -81,7 +81,7 @@
     <repository>
       <id>source.uhi.ac.uk-repository</id>
       <name>UHI Maven2 repository</name>
-      <url>http://source.uhi.ac.uk/mvn</url>
+      <url>dav:http://source.uhi.ac.uk/mvn</url>
     </repository>
   </distributionManagement>
 
