@@ -45,11 +45,13 @@
     </license>
   </licenses>
 
+  <!--
   <scm>
     <connection>scm:cvs:ext:alistairskye@guanxi.cvs.sourceforge.net:/cvsroot/guanxi:guanxi2</connection>
     <developerConnection>scm:cvs:ext:alistairskye@guanxi.cvs.sourceforge.net:/cvsroot/guanxi:guanxi2</developerConnection>
     <url>http://guanxi.cvs.sourceforge.net</url>
   </scm>
+  -->
   
   <repositories>
     <repository>
