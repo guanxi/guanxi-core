@@ -73,12 +73,11 @@
   </reports>
 
   <distributionManagement>
-    <!--
     <site>
-      <id>codebrane-ftp-repository</id> 
-      <url>ftp://ftp.codebrane.com</url>
+      <id>guanxi-wiki</id>
+      <name>Guanxi wiki</name>
+      <url>scp://www.guanxi.uhi.ac.uk/WWW/guanxi/htdocs/site</url>
     </site>
-    -->
 
     <repository>
       <id>source.uhi.ac.uk-repository</id>
