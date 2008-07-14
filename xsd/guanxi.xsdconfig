@@ -64,6 +64,10 @@
   <xb:namespace uri="http://schemas.xmlsoap.org/soap/envelope/">
     <xb:package>org.guanxi.xal.soap</xb:package>
   </xb:namespace>
+
+  <xb:namespace uri="urn:mace:shibboleth:metadata:1.0">
+    <xb:package>org.guanxi.xal.shibboleth_1_0.metadata</xb:package>
+  </xb:namespace>
     
   <!-- Mappings from types defined in guanxi-idp.xsd to Java classes -->
   <xb:qname name="gxidp:credsType" javaname="Creds"/>
