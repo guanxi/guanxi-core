@@ -16,8 +16,20 @@
       <roles>
         <role>Project Manager</role>
         <role>Architect</role>
+        <role>Developer</role>
       </roles>
       <organization>codeBrane</organization>
+      <timezone>0</timezone>
+    </developer>
+    
+    <developer>
+      <id>matthewfranglen</id>
+      <name>Matthew Franglen</name>
+      <email>matthewfranglen@users.sourceforge.net</email>
+      <roles>
+        <role>Developer</role>
+      </roles>
+      <organization>Semantico</organization>
       <timezone>0</timezone>
     </developer>
   </developers>
