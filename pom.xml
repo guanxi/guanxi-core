@@ -45,6 +45,14 @@
       <subscribe>https://lists.sourceforge.net/lists/listinfo/guanxi-development</subscribe>
       <unsubscribe>https://lists.sourceforge.net/lists/listinfo/guanxi-development</unsubscribe>
       <post>guanxi-development@lists.sourceforge.net</post>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=guanxi-src-notify</archive>
+    </mailingList>
+    
+    <mailingList>
+      <name>Guanxi Source Notify List</name>
+      <subscribe>https://lists.sourceforge.net/lists/listinfo/guanxi-src-notify</subscribe>
+      <unsubscribe>https://lists.sourceforge.net/lists/listinfo/guanxi-src-notify</unsubscribe>
+      <post>guanxi-src-notify@lists.sourceforge.net</post>
       <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=guanxi-development</archive>
     </mailingList>
   </mailingLists>
@@ -57,8 +65,8 @@
     </license>
   </licenses>
 
-  <!-- mvn release:prepare -DdryRun=true
-       mvn release:clean release:prepare -Dusername=johndoe -Dpassword=passwd
+  <!-- mvn release:prepare -DdryRun=true -Dusername=username -Dpassword=password
+       mvn release:clean release:prepare -Dusername=username -Dpassword=password
        mvn release:perform -->
   <scm>
     <connection>scm:cvs:ext:guanxi.cvs.sourceforge.net:/cvsroot/guanxi:guanxi2</connection>
