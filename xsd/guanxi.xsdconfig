@@ -68,6 +68,11 @@
   <xb:namespace uri="urn:mace:shibboleth:metadata:1.0">
     <xb:package>org.guanxi.xal.shibboleth_1_0.metadata</xb:package>
   </xb:namespace>
+  
+  <!-- the additional template entry is here -->
+  <xb:namespace uri="http://www.guanxi.uhi.ac.uk/metadata-template">
+  	<xb:package>org.guanxi.xal.metadata</xb:package>
+  </xb:namespace>
     
   <!-- Mappings from types defined in guanxi-idp.xsd to Java classes -->
   <xb:qname name="gxidp:credsType" javaname="Creds"/>
