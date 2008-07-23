@@ -70,9 +70,14 @@
       <id>source.uhi.ac.uk-repository</id>
       <name>UHI Maven 2.x Repository</name>
       <url>http://source.uhi.ac.uk/mvn</url>
+    </repository>
+    
+    <repository>
+      <id>source.uhi.ac.uk-snapshot-repository</id>
+      <name>UHI Maven2 snapshot repository</name>
+      <url>http://source.uhi.ac.uk/snapshots</url>
       <snapshots>
-        <enabled>false</enabled>
-        <updatePolicy>always</updatePolicy>
+        <enabled>true</enabled>
       </snapshots>
     </repository>
   </repositories>
