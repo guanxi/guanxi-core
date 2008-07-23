@@ -84,6 +84,13 @@
       <name>UHI Maven2 repository</name>
       <url>dav:http://source.uhi.ac.uk/mvn</url>
     </repository>
+    
+    <snapshotRepository>
+   	  <id>source.uhi.ac.uk-snapshot-repository</id>
+      <name>UHI Maven2 snapshot repository</name>
+      <url>dav:http://source.uhi.ac.uk/snapshots</url>
+      <uniqueVersion>false</uniqueVersion>
+ 	</snapshotRepository>
   </distributionManagement>
 
   <build>
