@@ -57,13 +57,14 @@
     </license>
   </licenses>
 
-  <!--
+  <!-- mvn release:prepare -DdryRun=true
+       mvn release:clean release:prepare -Dusername=johndoe -Dpassword=passwd
+       mvn release:perform -->
   <scm>
-    <connection>scm:cvs:ext:alistairskye@guanxi.cvs.sourceforge.net:/cvsroot/guanxi:guanxi2</connection>
-    <developerConnection>scm:cvs:ext:alistairskye@guanxi.cvs.sourceforge.net:/cvsroot/guanxi:guanxi2</developerConnection>
-    <url>http://guanxi.cvs.sourceforge.net</url>
+    <connection>scm:cvs:ext:guanxi.cvs.sourceforge.net:/cvsroot/guanxi:guanxi2</connection>
+    <developerConnection>scm:cvs:ext:guanxi.cvs.sourceforge.net:/cvsroot/guanxi:guanxi2</developerConnection>
+    <url>http://guanxi.cvs.sourceforge.net/guanxi/</url>
   </scm>
-  -->
   
   <repositories>
     <repository>
