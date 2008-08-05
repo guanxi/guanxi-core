@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0">
   <modelVersion>4.0.0</modelVersion>
-  
+
   <name>Guanxi</name>
   <groupId>org.guanxi</groupId>
   <artifactId>guanxi-core</artifactId>
@@ -21,7 +21,7 @@
       <organization>codeBrane</organization>
       <timezone>0</timezone>
     </developer>
-    
+
     <developer>
       <id>matthewfranglen</id>
       <name>Matthew Franglen</name>
@@ -38,7 +38,7 @@
     <system>SourceForge</system>
     <url>http://sourceforge.net/tracker/?group_id=134770</url>
   </issueManagement>
-  
+
   <mailingLists>
     <mailingList>
       <name>Guanxi Development List</name>
@@ -47,7 +47,7 @@
       <post>guanxi-development@lists.sourceforge.net</post>
       <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=guanxi-src-notify</archive>
     </mailingList>
-    
+
     <mailingList>
       <name>Guanxi Source Notify List</name>
       <subscribe>https://lists.sourceforge.net/lists/listinfo/guanxi-src-notify</subscribe>
@@ -73,14 +73,14 @@
     <developerConnection>scm:cvs:ext:guanxi.cvs.sourceforge.net:/cvsroot/guanxi:guanxi2</developerConnection>
     <url>http://guanxi.cvs.sourceforge.net/guanxi/</url>
   </scm>
-  
+
   <repositories>
     <repository>
       <id>source.uhi.ac.uk-repository</id>
       <name>UHI Maven 2.x Repository</name>
       <url>http://source.uhi.ac.uk/mvn</url>
     </repository>
-    
+
     <repository>
       <id>source.uhi.ac.uk-snapshot-repository</id>
       <name>UHI Maven2 snapshot repository</name>
@@ -110,7 +110,7 @@
       <name>UHI Maven2 repository</name>
       <url>dav:http://source.uhi.ac.uk/mvn</url>
     </repository>
-    
+
     <snapshotRepository>
    	  <id>source.uhi.ac.uk-snapshot-repository</id>
       <name>UHI Maven2 snapshot repository</name>
@@ -136,6 +136,44 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.4</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>build-jar</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>deploy</phase>
+            <goals>
+              <goal>deploy-file</goal>
+            </goals>
+            <configuration>
+              <repositoryId>source.uhi.ac.uk-snapshot-repository</repositoryId>
+              <url>http://source.uhi.ac.uk/snapshots</url>
+              <packaging>jar</packaging>
+              <artifactId>${project.artifactId}</artifactId>
+              <groupId>${project.groupId}</groupId>
+              <version>${project.version}</version>
+              <uniqueVersion>false</uniqueVersion>
+              <pomFile>${basedir}/pom.xml</pomFile>
+              <file>${project.build.directory}/${project.artifactId}-${project.version}.jar</file>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
 
@@ -163,7 +201,7 @@
         <artifactId>guanxi-common</artifactId>
         <version>2.0.0-SNAPSHOT</version>
       </dependency>
-      
+
       <dependency>
         <groupId>org.guanxi</groupId>
         <artifactId>guanxi-beans</artifactId>
