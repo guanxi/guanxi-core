@@ -185,7 +185,6 @@
   <element name="ldap">
     <complexType>
       <sequence>
-        <element name="domain" type="string" minOccurs="1" maxOccurs="1" />
         <element name="values" type="gx:valuesType" minOccurs="0" maxOccurs="1" />
         <element name="server" type="gx:serverType" minOccurs="1" maxOccurs="unbounded" />
       </sequence>
@@ -284,7 +283,16 @@
         <attribute name="mappedValue" type="string"/>
         <attribute name="mappedRule" type="string"/>
         <attribute name="persistent" type="boolean"/>
-        <attribute name="scoped" type="boolean"/>
+        <attribute name="scope" type="string"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <complexType name="mapVarType">
+    <simpleContent>
+      <extension base="string">
+        <attribute name="name" type="string"/>
+        <attribute name="value" type="string"/>
       </extension>
     </simpleContent>
   </complexType>
@@ -295,6 +303,7 @@
         <element name="include" type="gx:mapIncludeType" minOccurs="0" maxOccurs="unbounded" />
         <element name="map" type="gx:mapType" minOccurs="0" maxOccurs="unbounded" />
         <element name="provider" type="gx:mapProviderType" minOccurs="0" maxOccurs="unbounded" />
+        <element name="var" type="gx:mapVarType" minOccurs="0" maxOccurs="unbounded" />
       </sequence>
     </complexType>
   </element>
@@ -354,7 +363,6 @@
   <element name="FlatFileAuthenticatorConfig">
     <complexType>
       <sequence>
-        <element name="Domain" type="string" />
         <element name="User" type="gx:ffUserType" maxOccurs="unbounded" />
       </sequence>
     </complexType>
