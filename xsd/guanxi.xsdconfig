@@ -85,6 +85,7 @@
   <xb:qname name="gxidp:mapIncludeType" javaname="MapInclude"/>
   <xb:qname name="gxidp:mapProviderType" javaname="MapProvider"/>
   <xb:qname name="gxidp:mapRefType" javaname="MapRef"/>
+  <xb:qname name="gxidp:mapVarType" javaname="MapVar"/>
   <xb:qname name="gxidp:ffUserAttributeType" javaname="UserAttribute"/>
   <xb:qname name="gxidp:ffUserType" javaname="User"/>
   <xb:qname name="gxidp:attributorAttributeType" javaname="AttributorAttribute"/>
