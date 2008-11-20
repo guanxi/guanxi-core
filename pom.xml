@@ -66,7 +66,7 @@
   </licenses>
 
   <!-- mvn release:prepare -DdryRun=true -Dusername=username -Dpassword=password
-       mvn release:clean release:prepare -Dusername=username -Dpassword=password
+       mvn release:clean release:prepare -DscmCommentPrefix=Release comment text -Dusername=username -Dpassword=password
        mvn release:perform -->
   <scm>
     <connection>scm:cvs:ext:guanxi.cvs.sourceforge.net:/cvsroot/guanxi:guanxi2</connection>
