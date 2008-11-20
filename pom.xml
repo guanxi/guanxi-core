@@ -379,5 +379,6 @@
     <module>../IdP2</module>
     <module>../WAYF</module>
     <module>../Provider</module>
+    <module>../Beans</module>
   </modules>
 </project>
