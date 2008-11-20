@@ -283,6 +283,7 @@
         <attribute name="mappedValue" type="string"/>
         <attribute name="mappedRule" type="string"/>
         <attribute name="persistent" type="boolean"/>
+        <attribute name="unique" type="boolean"/>
         <attribute name="scope" type="string"/>
       </extension>
     </simpleContent>
