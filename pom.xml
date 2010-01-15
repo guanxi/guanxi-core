@@ -1,0 +1,379 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <name>Guanxi</name>
+  <groupId>org.guanxi</groupId>
+  <artifactId>guanxi-core</artifactId>
+  <packaging>pom</packaging>
+  <version>2.0.5-SNAPSHOT</version>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+  <developers>
+    <developer>
+      <id>alistairskye</id>
+      <name>Alistair Young</name>
+      <email>alistair@codebrane.com</email>
+      <roles>
+        <role>Project Manager</role>
+        <role>Architect</role>
+        <role>Developer</role>
+      </roles>
+      <organization>codeBrane</organization>
+      <timezone>0</timezone>
+    </developer>
+
+    <developer>
+      <id>matthewfranglen</id>
+      <name>Matthew Franglen</name>
+      <email>matthewfranglen@users.sourceforge.net</email>
+      <roles>
+        <role>Developer</role>
+      </roles>
+      <organization>Semantico</organization>
+      <timezone>0</timezone>
+    </developer>
+  </developers>
+
+  <issueManagement>
+    <system>SourceForge</system>
+    <url>http://sourceforge.net/tracker/?group_id=134770</url>
+  </issueManagement>
+
+  <mailingLists>
+    <mailingList>
+      <name>Guanxi Development List</name>
+      <subscribe>https://lists.sourceforge.net/lists/listinfo/guanxi-development</subscribe>
+      <unsubscribe>https://lists.sourceforge.net/lists/listinfo/guanxi-development</unsubscribe>
+      <post>guanxi-development@lists.sourceforge.net</post>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=guanxi-src-notify</archive>
+    </mailingList>
+
+    <mailingList>
+      <name>Guanxi Source Notify List</name>
+      <subscribe>https://lists.sourceforge.net/lists/listinfo/guanxi-src-notify</subscribe>
+      <unsubscribe>https://lists.sourceforge.net/lists/listinfo/guanxi-src-notify</unsubscribe>
+      <post>guanxi-src-notify@lists.sourceforge.net</post>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum_name=guanxi-development</archive>
+    </mailingList>
+  </mailingLists>
+
+  <licenses>
+    <license>
+      <name>MOZILLA PUBLIC LICENSE Version 1.1</name>
+      <url>http://www.mozilla.org/MPL/MPL-1.1.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <!-- mvn release:prepare -DdryRun=true -Dusername=username -Dpassword=password
+       mvn release:clean release:prepare -DscmCommentPrefix=Release comment text -Dusername=username -Dpassword=password
+       mvn release:perform -->
+  <scm>
+    <connection>scm:cvs:ext:guanxi.cvs.sourceforge.net:/cvsroot/guanxi:guanxi2</connection>
+    <developerConnection>scm:cvs:ext:guanxi.cvs.sourceforge.net:/cvsroot/guanxi:guanxi2</developerConnection>
+    <url>http://guanxi.cvs.sourceforge.net/guanxi/</url>
+  </scm>
+
+  <repositories>
+    <repository>
+      <id>source.uhi.ac.uk-repository</id>
+      <name>UHI Maven 2.x Repository</name>
+      <url>http://source.uhi.ac.uk/mvn</url>
+    </repository>
+
+    <repository>
+      <id>source.uhi.ac.uk-snapshot-repository</id>
+      <name>UHI Maven2 snapshot repository</name>
+      <url>http://source.uhi.ac.uk/snapshots</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <reports>
+    <report>maven-developer-activity-plugin</report>
+    <report>maven-file-activity-plugin</report>
+    <report>maven-javadoc-plugin</report>
+    <report>maven-surefire-plugin</report>
+  </reports>
+
+  <distributionManagement>
+    <site>
+      <id>guanxi-wiki</id>
+      <name>Guanxi wiki</name>
+      <url>scp://www.guanxi.uhi.ac.uk/WWW/guanxi/htdocs/site</url>
+    </site>
+
+    <repository>
+      <id>source.uhi.ac.uk-repository</id>
+      <name>UHI Maven2 repository</name>
+      <url>dav:http://source.uhi.ac.uk/mvn</url>
+    </repository>
+
+    <snapshotRepository>
+   	  <id>source.uhi.ac.uk-snapshot-repository</id>
+      <name>UHI Maven2 snapshot repository</name>
+      <url>dav:http://source.uhi.ac.uk/snapshots</url>
+      <uniqueVersion>false</uniqueVersion>
+ 	</snapshotRepository>
+  </distributionManagement>
+
+  <build>
+    <plugins>
+      <plugin>
+        <inherited>true</inherited>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+
+      <!-- mvn surefire:test -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.4</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>build-jar</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>deploy</phase>
+            <goals>
+              <goal>deploy-file</goal>
+            </goals>
+            <configuration>
+              <repositoryId>source.uhi.ac.uk-snapshot-repository</repositoryId>
+              <url>http://source.uhi.ac.uk/snapshots</url>
+              <packaging>jar</packaging>
+              <artifactId>${project.artifactId}</artifactId>
+              <groupId>${project.groupId}</groupId>
+              <version>${project.version}</version>
+              <uniqueVersion>false</uniqueVersion>
+              <pomFile>${basedir}/pom.xml</pomFile>
+              <file>${project.build.directory}/${project.artifactId}-${project.version}.jar</file>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-webdav</artifactId>
+        <version>1.0-beta-2</version>
+      </extension>
+
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+         <artifactId>wagon-ftp</artifactId>
+         <version>1.0-beta-2</version>
+      </extension>
+    </extensions>
+  </build>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- **************************************************** -->
+      <!-- Guanxi -->
+      <dependency>
+        <groupId>org.guanxi</groupId>
+        <artifactId>guanxi-common</artifactId>
+        <version>2.0.6-SNAPSHOT</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.guanxi</groupId>
+        <artifactId>guanxi-beans</artifactId>
+        <version>1.4.2-SNAPSHOT</version>
+      </dependency>
+      <!-- **************************************************** -->
+
+      <!-- **************************************************** -->
+      <!-- External dependencies -->
+      <dependency>
+        <groupId>org.apache.xmlbeans</groupId>
+        <artifactId>jsr173_1.0_api</artifactId>
+        <version>2.3.0</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.xmlbeans</groupId>
+        <artifactId>xbean</artifactId>
+        <version>2.3.0</version>
+      </dependency>
+
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.14</version>
+      </dependency>
+
+      <!-- This combination of xml-sec and xalan will stop the error:
+           java.lang.NoSuchMethodError: org.apache.xpath.compiler.FunctionTable.installFunction
+      -->
+      <dependency>
+        <groupId>xml-security</groupId>
+        <artifactId>xmlsec</artifactId>
+        <version>1.3.0</version>
+      </dependency>
+      <dependency>
+        <groupId>xalan</groupId>
+        <artifactId>xalan</artifactId>
+        <version>2.7.0</version>
+      </dependency>
+
+      <dependency>
+        <groupId>bouncycastle</groupId>
+        <artifactId>bcprov-jdk14</artifactId>
+        <version>136</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache</groupId>
+        <artifactId>xercesImpl</artifactId>
+        <version>2.9.0</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache</groupId>
+        <artifactId>xml-apis</artifactId>
+        <version>2.9.0</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring</artifactId>
+        <version>2.5.0</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>2.5.0</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-mock</artifactId>
+        <version>2.0.8</version>
+        <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>jstl</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.1.2</version>
+      </dependency>
+
+      <dependency>
+        <groupId>taglibs</groupId>
+        <artifactId>standard</artifactId>
+        <version>1.1.2</version>
+      </dependency>
+
+      <dependency>
+        <groupId>commons-logging</groupId>
+        <artifactId>commons-logging</artifactId>
+        <version>1.1.1</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.novell</groupId>
+        <artifactId>novell-jldap-devel</artifactId>
+        <version>2006.09.28-1unix</version>
+      </dependency>
+
+      <dependency>
+        <groupId>servletapi</groupId>
+        <artifactId>servletapi</artifactId>
+        <version>2.4</version>
+        <scope>provided</scope>
+      </dependency>
+      <!-- **************************************************** -->
+
+      <!-- **************************************************** -->
+      <!-- Quartz -->
+      <dependency>
+        <groupId>opensymphony</groupId>
+        <artifactId>quartz</artifactId>
+        <version>1.6.0</version>
+      </dependency>
+
+      <!-- Should be able to remove this when this bug is fixed:
+           http://jira.opensymphony.com/browse/QUARTZ-562
+      -->
+      <dependency>
+        <groupId>jta</groupId>
+        <artifactId>jta</artifactId>
+        <version>1.0.1b</version>
+      </dependency>
+
+      <dependency>
+        <groupId>commons-collections</groupId>
+        <artifactId>commons-collections</artifactId>
+        <version>3.2</version>
+      </dependency>
+      <!-- **************************************************** -->
+
+      <!-- **************************************************** -->
+      <!-- Derby -->
+      <dependency>
+        <groupId>org.apache</groupId>
+        <artifactId>derby</artifactId>
+        <version>10.3.2.1</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache</groupId>
+        <artifactId>derbytools</artifactId>
+        <version>10.3.2.1</version>
+      </dependency>
+      <!-- **************************************************** -->
+
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>5.1.6</version>
+      </dependency>
+
+      <dependency>
+        <groupId>postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>8.3-603.jdbc3</version>
+      </dependency>
+
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.4</version>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+</project>
