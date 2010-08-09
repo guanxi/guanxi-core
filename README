@@ -1,0 +1,41 @@
+Guanxi::Core
+============
+
+o Introduction
+o Building
+o More information
+o License
+
+Introduction
+------------
+The Guanxi system will let you do all sorts of Shibboleth and SAML2 compatible single sign on (SSO)
+things. It implements the Shibboleth Profile of the SAML1.1 specification as well as various SAML2
+profiles. Don't get confused with the Internet2 Shibboleth software, which is the reference
+implementation of the Shibboleth SAML Profile. Guanxi is another implementation.
+Born on the Isle of Skye in the Inner Hebrides of Scotland. Guanxi started life as a
+UK JISC funded core middleware project, lead by the University of the Highlands and Islands
+in partnership with the University of Oxford and Leeds University.
+
+The Guanxi Core module contains the root pom.xml as well
+as all the localised resources for the other Guanxi modules
+
+Building
+--------
+git clone http://github.com/guanxi/guanxi-core.git
+cd guanxi-core
+mvn clean install
+
+More information
+----------------
+The Guanxi blog: http://codebrane.com/blog/?cat=2
+
+License
+-------
+This program is free software; you can redistribute it and/or modify
+it under the terms of the Mozilla Public License version 1.1,
+as published by the Netscape Communications Corporation.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+Mozilla Public License for details.
