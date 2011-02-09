@@ -167,8 +167,8 @@
               <goal>deploy-file</goal>
             </goals>
             <configuration>
-              <repositoryId>source.uhi.ac.uk-snapshot-repository</repositoryId>
-              <url>http://source.uhi.ac.uk/snapshots</url>
+              <repositoryId>source.uhi.ac.uk-repository</repositoryId>
+              <url>http://source.uhi.ac.uk</url>
               <packaging>jar</packaging>
               <artifactId>${project.artifactId}</artifactId>
               <groupId>${project.groupId}</groupId>
